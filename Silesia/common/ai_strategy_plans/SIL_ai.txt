@@ -1,0 +1,100 @@
+SIL_ai_monarchist_plan = {
+	name = "SIL monarchist plan"
+	desc = "AI prioritizes the Silesian monarchy."
+	allowed = { original_tag = SIL }
+	enable = { has_country_flag = SIL_ai_monarchist }
+	abort = { always = no }
+	ai_national_focuses = {
+		SIL_the_silesian_question
+		SIL_a_silesian_state
+		SIL_industrial_heartland
+		SIL_the_silesian_army
+		SIL_coal_of_silesia
+		SIL_silesian_steelworks
+		SIL_machine_tools
+		SIL_the_silesian_arsenal
+		SIL_officer_training
+		SIL_choose_our_future
+		SIL_remember_the_piast
+		SIL_restore_the_crown
+		SIL_royal_court
+		SIL_silesian_dynasty
+		SIL_crown_of_central_europe
+		SIL_silesian_claims
+		SIL_reunify_silesia
+	}
+	weight = { factor = 1.0 }
+}
+
+SIL_ai_fascist_plan = {
+	name = "SIL fascist plan"
+	desc = "AI prioritizes the Silesian nationalist route."
+	allowed = { original_tag = SIL }
+	enable = { has_country_flag = SIL_ai_fascist }
+	abort = { always = no }
+	ai_national_focuses = {
+		SIL_the_silesian_question
+		SIL_a_silesian_state
+		SIL_industrial_heartland
+		SIL_the_silesian_army
+		SIL_silesian_arsenal
+		SIL_officer_training
+		SIL_choose_our_future
+		SIL_national_revolution
+		SIL_one_people_one_state
+		SIL_militarize_the_state
+		SIL_black_guard
+		SIL_greater_silesia
+		SIL_silesian_pact
+	}
+	weight = { factor = 1.0 }
+}
+
+SIL_ai_communist_plan = {
+	name = "SIL communist plan"
+	desc = "AI prioritizes the Silesian workers' state."
+	allowed = { original_tag = SIL }
+	enable = { has_country_flag = SIL_ai_communist }
+	abort = { always = no }
+	ai_national_focuses = {
+		SIL_the_silesian_question
+		SIL_a_silesian_state
+		SIL_industrial_heartland
+		SIL_coal_of_silesia
+		SIL_silesian_steelworks
+		SIL_the_silesian_army
+		SIL_choose_our_future
+		SIL_workers_revolution
+		SIL_workers_councils
+		SIL_nationalize_the_mines
+		SIL_red_army
+		SIL_socialism_without_moscow
+		SIL_central_european_revolution
+	}
+	weight = { factor = 1.0 }
+}
+
+SIL_ai_democratic_plan = {
+	name = "SIL democratic plan"
+	desc = "AI prioritizes the Silesian republic."
+	allowed = { original_tag = SIL }
+	enable = { has_country_flag = SIL_ai_democratic }
+	abort = { always = no }
+	ai_national_focuses = {
+		SIL_the_silesian_question
+		SIL_a_silesian_state
+		SIL_industrial_heartland
+		SIL_secure_the_oder
+		SIL_the_silesian_army
+		SIL_silesian_arsenal
+		SIL_officer_training
+		SIL_choose_our_future
+		SIL_republic_for_silesia
+		SIL_constitution
+		SIL_free_elections
+		SIL_rights_of_workers
+		SIL_seek_international_recognition
+		SIL_visegrad_democracy
+	}
+	weight = { factor = 1.0 }
+}

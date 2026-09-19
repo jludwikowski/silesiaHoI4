@@ -1,0 +1,943 @@
+ideas = {
+	country = {
+
+		SIL_disorganised_armed_forces = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_disorganised_armed_forces
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = -0.15
+				army_org_factor = -0.08
+				army_speed_factor = -0.1
+				training_time_factor = 0.25
+				minimum_training_level = -0.1
+			}
+		}
+
+		SIL_partially_organised_armed_forces = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_disorganised_armed_forces
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = -0.10
+				army_speed_factor = -0.1
+				training_time_factor = 0.25
+				minimum_training_level = -0.1
+			}
+		}
+
+		SIL_partially_organised_armed_forces_officers = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_disorganised_armed_forces
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = -0.10
+				army_org_factor = +0.04
+				army_speed_factor = -0.1
+			}
+		}
+
+		SIL_partially_organised_armed_forces_polish_veterans = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_disorganised_armed_forces
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = -0.05
+				training_time_factor = 0.25
+				minimum_training_level = -0.1
+			}
+		}
+
+		SIL_organised_armed_forces = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_disorganised_armed_forces
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = -0.05
+				army_org_factor = +0.04
+			}
+		}
+
+		SIL_disorganised_airforce = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FIN_finnish_airforce
+				
+			removal_cost = -1
+				
+			modifier = {
+				air_accidents_factor = 0.15
+				air_mission_efficiency = -0.1
+			}
+		}
+
+		SIL_organised_airforce_mechanics = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FIN_finnish_airforce
+				
+			removal_cost = -1
+				
+			modifier = {
+				air_accidents_factor = -0.05
+				air_mission_efficiency = -0.1
+			}
+		}
+
+		SIL_organised_airforce_pilots = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FIN_finnish_airforce
+				
+			removal_cost = -1
+				
+			modifier = {
+				air_accidents_factor = 0.15
+				air_mission_efficiency = +0.05
+			}
+		}
+
+		SIL_organised_airforce = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FIN_finnish_airforce
+				
+			removal_cost = -1
+				
+			modifier = {
+				air_accidents_factor = -0.05
+				air_mission_efficiency = +0.05
+			}
+		}
+
+		SIL_organised_airforce_aces = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FIN_finnish_airforce
+				
+			removal_cost = -1
+				
+			modifier = {
+				air_accidents_factor = -0.05
+				air_mission_efficiency = 0.05
+				air_ace_generation_chance_factor = 0.15
+			}
+		}
+		
+
+		SIL_provisionary_goverment = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.15
+				production_factory_max_efficiency_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.05
+				production_speed_buildings_factor = -0.05
+			}
+		}
+
+		SIL_german_goverment = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.1
+				production_factory_efficiency_gain_factor = +0.05
+				production_speed_buildings_factor = +0.05
+			}
+		}
+
+		SIL_german_goverment_nationalists = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = +0.05
+				production_speed_buildings_factor = +0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		SIL_german_goverment_duchy = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.1
+				production_factory_efficiency_gain_factor = +0.05
+				production_factory_max_efficiency_factor = +0.05
+				production_speed_buildings_factor = +0.05
+				stability_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		SIL_best_coal = {
+
+			allowed = {
+	            always = yes
+	        }
+	        allowed_civil_war = {
+	            always = yes
+	        }
+	        removal_cost = -1
+	        
+	        picture = generic_exploit_mines
+	        
+	        modifier = {
+	            trade_opinion_factor = 0.50
+	        }
+
+            on_add = { # Note: Doesn't work if the idea is added within country history or a bookmark's effect.
+                every_other_country = { # If it's added in country history, then replicate the effects there as well.
+                    add_opinion_modifier = {
+                        target = ROOT
+                        modifier = democratic_leanings_good
+                    }
+                    add_opinion_modifier = {
+                        target = ROOT
+                        modifier = neutrality_leanings_good
+                	}
+                    reverse_add_opinion_modifier = {
+                        target = ROOT
+                        modifier = democratic_leanings_good 
+                    }
+                    reverse_add_opinion_modifier = {
+                        target = ROOT
+                        modifier = neutrality_leanings_good 
+                    }
+                }
+            }
+            on_remove = {
+                every_other_country = {
+                    remove_opinion_modifier = {
+                        target = ROOT
+                        modifier = democratic_leanings_good
+                    }
+                    remove_opinion_modifier = {
+                        target = ROOT
+                        modifier = neutrality_leanings_good
+                    }
+                    ROOT = {
+                        remove_opinion_modifier = {
+                            target = PREV
+                            modifier = democratic_leanings_good 
+                        }
+                        remove_opinion_modifier = {
+                            target = PREV
+                            modifier = neutrality_leanings_good 
+                        }
+                    }
+                }
+            }
+            modifier = {
+                custom_modifier_tooltip = add_opinion_modifier_tt # Since on_add/on_remove aren't shown to the player
+            }
+		}
+
+		SIL_new_silesian_goverment = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1	
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = -0.1
+				production_factory_max_efficiency_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.05
+			}
+		}
+
+		SIL_new_silesian_goverment_controlled = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = -0.1
+				production_factory_max_efficiency_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		SIL_new_silesian_goverment_controlled_duchy = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.05
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		SIL_new_silesian_goverment_controlled_nationalists = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = gre_schachtplan
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		SIL_prussian_efficiency = {
+			allowed = {
+				original_tag = SIL
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_license_production
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+
+		}
+
+		SIL_spirit_of_uprisings = {
+			picture = generic_army
+			allowed = { original_tag = SIL }
+			modifier = {
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				war_support_factor = 0.1
+				weekly_manpower = 500
+			}
+		}
+
+		SIL_polish_innovation = {
+			picture = generic_research_bonus
+			allowed = { original_tag = SIL }
+			modifier = {
+				research_speed_factor = 0.05
+				stability_factor = -0.03
+			}
+		}
+
+		SIL_german_engineering = {
+			picture = generic_research_bonus
+			allowed = { original_tag = SIL }
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_factor = -0.03
+			}
+		}
+
+		SIL_political_activity = {
+			picture = generic_central_management
+			allowed = { original_tag = SIL }
+			modifier = {
+				political_power_factor = 0.1
+			}
+		}
+
+		SIL_silesian_identity = {
+			picture = generic_central_management
+			allowed = { original_tag = SIL }
+			modifier = {
+				consumer_goods_factor = -0.1
+				army_defence_factor = 0.1
+				state_resources_factor = 0.2
+			}
+		}
+
+		SIL_normalizing = {
+			picture = generic_war_preparation
+			allowed = { original_tag = SIL }
+			modifier = {
+    			stability_weekly = 0.01
+    		}
+		}
+
+		SIL_coal_economy = {
+			picture = generic_resources
+			allowed = { original_tag = SIL }
+			modifier = {
+				local_resources_factor = 0.10
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		SIL_silesian_arsenal = {
+			picture = generic_war_preparation
+			allowed = { original_tag = SIL }
+			modifier = {
+				production_speed_arms_factory_factor = 0.10
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+ 		SIL_comintern_liaison = {
+ 			picture = idea_generic_soviet_advisors
+ 			allowed = { always = yes }
+ 			modifier = {
+ 				research_speed_factor = 0.05
+ 				political_power_factor = 0.1
+ 			}
+ 		}
+
+ 		SIL_national_communism_doctrine = {
+ 			picture = idea_generic_national_unity
+ 			allowed = { always = yes }
+ 			modifier = {
+ 				stability_factor = 0.05
+ 				drift_defence_factor = 0.15
+ 			}
+ 		}
+
+		SIL_motorization = {
+			picture = generic_armor_bonus
+			allowed = { original_tag = SIL }
+			modifier = {
+				army_speed_factor = 0.05
+			}
+		}
+
+		SIL_central_bank = {
+			picture = generic_foreign_capital
+			allowed = { original_tag = SIL }
+			modifier = {
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		SIL_currency = {
+			picture = generic_foreign_capital
+			allowed = { original_tag = SIL }
+			modifier = {
+				consumer_goods_factor = -0.2
+			}
+		}
+
+		SIL_national_mobilization = {
+			picture = generic_fascism
+			allowed = { original_tag = SIL }
+			modifier = {
+				war_support_factor = 0.10
+				conscription_factor = 0.01
+				mobilization_speed = 0.10
+			}
+		}
+
+		SIL_militarized_society = {
+			picture = generic_army
+			allowed = { original_tag = SIL }
+			modifier = {
+				conscription = 0.02
+				army_org_factor = 0.05
+				training_time_army_factor = -0.10
+				war_support_factor = 0.05
+			}
+		}
+
+		SIL_socialist_revolutionaries_activity = {
+			picture = generic_communism
+			allowed = { original_tag = SIL }
+			modifier = {
+				industrial_capacity_factory = -0.1
+				production_speed_buildings_factor = -0.1
+			}
+		}
+
+		SIL_government_bonds_idea = {
+            picture = generic_production
+            
+            modifier = {
+                consumer_goods_factor = -0.20
+            }
+            
+            removal_cost = -1
+        }
+
+		SIL_silesian_parlament = {
+			picture = generic_democracy
+			allowed = { original_tag = SIL }
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				democratic_drift = 0.01
+				democratic_acceptance = 30
+				non_core_manpower = 0.3
+			}
+		}
+
+		SIL_crossroads_nation = {
+			picture = generic_foreign_capital
+			allowed = { original_tag = SIL }
+			modifier = {
+				resistance_growth = -0.33
+				compliance_growth = 1
+				drift_defence_factor = 0.3
+			}
+		}
+
+		SIL_peoples_army = {
+			picture = generic_army
+			allowed = { original_tag = SIL }
+			modifier = {
+				max_command_power = 50
+				command_power_gain_mult = 0.30
+				war_support_factor = 0.05
+				weekly_manpower = 500
+			}
+		}
+
+		SIL_proffesional_officer_corps = {
+			picture = generic_army
+			allowed = { original_tag = SIL }
+			modifier = {
+				max_command_power = 30
+				command_power_gain_mult = 0.30
+				army_leader_start_level = 2
+				military_leader_cost_factor = -0.5
+			}
+		}
+
+		SIL_red_army_officers = {
+			picture = generic_army
+			allowed = { original_tag = SIL }
+			modifier = {
+				land_doctrine_cost_factor = -0.1
+				army_leader_start_attack_level = 2
+				army_leader_start_defense_level = 2
+				army_leader_start_logistics_level = 2
+				army_leader_start_planning_level = 2
+				military_leader_cost_factor = -0.5
+			}
+		}
+
+		SIL_workers_state = {
+			picture = generic_communism
+			allowed = { original_tag = SIL }
+			modifier = {
+				consumer_goods_factor = -0.1
+				industrial_capacity_factory = 0.1
+				political_power_gain = -0.1
+			}
+		}
+
+		SIL_nationalized_industry = {
+			picture = generic_industry
+			allowed = { original_tag = SIL }
+			modifier = {
+				industrial_capacity_factory = 0.10
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		SIL_independent_socialism = {
+			picture = generic_communism
+			allowed = { original_tag = SIL }
+			modifier = {
+				research_speed_factor = 0.05
+				army_morale = 0.05
+				political_power_gain = 0.05
+			}
+		}
+
+		SIL_legitimate_dynasty = {
+			picture = generic_economic_treaty
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				improve_relations_maintain_cost_factor = -0.15
+			}
+		}
+
+		SIL_military_state = {
+			picture = generic_infantry_bonus
+			allowed = { always = yes }
+			modifier = {
+				justify_war_goal_time = -0.25
+				generate_wargoal_tension = -0.4
+				war_support_factor = 0.05
+			}
+		}
+ 
+		SIL_legion_in_exile_spirit = {
+			picture = generic_war_preparation
+			allowed = { always = yes }
+			modifier = {
+				war_support_factor = 0.1
+				recruitable_population_factor = 0.2
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				weekly_manpower = 1000
+			}
+		}
+ 
+		SIL_total_defense_doctrine = {
+			picture = idea_generic_defense
+			allowed = { always = yes }
+			modifier = {
+				army_defence_factor = 0.15
+			}
+		}
+ 
+		SIL_reich_economic_integration = {
+			picture = generic_construction
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = 0.1
+				stability_factor = -0.05
+			}
+		}
+
+		SIL_duchy_diet = {
+			picture = ast_abandon_the_westminster_system
+			allowed = { always = yes }
+			modifier = {
+				neutrality_drift = 0.1
+				stability_factor = 0.05
+			}
+		}
+
+		SIL_fighting_spirit = {
+		picture = generic_war_preparation
+			allowed = { always = yes }
+			modifier = {
+				conscription_factor = 0.01
+				war_support_factor = 0.05
+			}
+		}
+ 
+		SIL_state_security_apparatus = {
+			picture = idea_generic_secret_police
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = -0.05
+			}
+		}
+ 
+		SIL_compact_of_labor = {
+			picture = idea_generic_national_unity
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.05
+				recruitable_population_factor = 0.1
+			}
+		}
+
+		SIL_volksbewegung_1 = {
+			picture = idea_generic_national_unity
+			allowed = { always = yes }
+			modifier = {
+				political_power_factor = 0.05
+			}
+		}
+ 
+		SIL_volksbewegung_2 = {
+			picture = idea_generic_national_unity
+			allowed = { always = yes }
+			modifier = {
+				political_power_factor = 0.1
+				recruitable_population_factor = 0.1
+			}
+		}
+ 
+		SIL_volksbewegung_3_schism = {
+			picture = idea_generic_army_effort
+			allowed = { always = yes }
+			modifier = {
+				recruitable_population_factor = 0.2
+				army_defence_factor = 0.1
+				stability_factor = -0.05
+			}
+		}
+ 
+		SIL_volksbewegung_3_client = {
+			picture = idea_generic_national_unity
+			allowed = { always = yes }
+			modifier = {
+				political_power_factor = 0.15
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		SIL_german_unrest_1 = {
+			picture = SIA_military_rebellious
+			allowed = { always = yes }
+			modifier = { stability_factor = -0.05 political_power_factor = -0.05 }
+		}
+ 
+		SIL_german_unrest_2 = {
+			picture = SIA_military_rebellious
+			allowed = { always = yes }
+			modifier = { stability_factor = -0.1 political_power_factor = -0.1 industrial_capacity_factory = -0.05 }
+		}
+ 
+		SIL_german_unrest_3 = {
+			picture = SIA_military_rebellious
+			allowed = { always = yes }
+			modifier = { stability_factor = -0.15 political_power_factor = -0.15 industrial_capacity_factory = -0.1 recruitable_population_factor = -0.08 }
+		}
+ 
+		SIL_german_unrest_4 = {
+			picture = SIA_military_rebellious
+			allowed = { always = yes }
+			modifier = { stability_factor = -0.2 political_power_factor = -0.2 industrial_capacity_factory = -0.15 recruitable_population_factor = -0.2 }
+		}
+ 
+		SIL_pacified_by_force = {
+			picture = idea_generic_secret_police
+			allowed = { always = yes }
+			modifier = { stability_factor = 0.05 political_power_factor = -0.05 }
+		}
+ 
+		SIL_conciliation_programme = {
+			picture = idea_generic_national_unity
+			allowed = { always = yes }
+			modifier = { consumer_goods_factor = 0.1 }
+		}
+
+ 		SIL_legitimate_dynasty_2 = {
+ 			picture = idea_generic_national_unity
+ 			allowed = { always = yes }
+ 			modifier = {
+ 				stability_factor = 0.15
+ 				improve_relations_maintain_cost_factor = -0.2
+ 			}
+ 		}
+
+ 		SIL_technocratic_planning_1 = {
+ 			picture = idea_generic_construction
+ 			allowed = { always = yes }
+ 			modifier = { political_power_factor = 0.1 }
+ 		}
+ 		SIL_technocratic_planning_2 = {
+ 			picture = idea_generic_construction
+ 			allowed = { always = yes }
+ 			modifier = { political_power_factor = 0.15 industrial_capacity_factory = 0.05 }
+ 		}
+ 		SIL_state_arms_directorate_2 = {
+ 			picture = idea_generic_construct_mil_factory
+ 			allowed = { always = yes }
+ 			modifier = { industrial_capacity_factory = 0.1 }
+ 		}
+ 		SIL_compact_of_labor_2 = {
+ 			picture = idea_generic_national_unity
+ 			allowed = { always = yes }
+ 			modifier = { stability_factor = 0.08 recruitable_population_factor = 0.15 }
+ 		}
+
+ 		SIL_silesian_academy_idea = {
+ 			picture = idea_generic_construction
+ 			allowed = { always = yes }
+ 			modifier = {
+ 				political_power_factor = 0.05
+ 				research_speed_factor = 0.05
+ 			}
+ 		}
+    }
+
+    aircraft_manufacturer = {
+
+		designer = yes
+
+		SIL_arado_silesia = {
+
+			picture = generic_air_manufacturer_1
+
+
+			allowed = {
+				tag = SIL
+			}
+
+			research_bonus = {
+				air_equipment = 0.15
+			}
+
+			traits = { light_aircraft_manufacturer }
+
+			equipment_bonus = {
+				# capable of aerobatics, forward shooting machine guns, low number of crashes
+			}
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		SIL_junkers_silesia = {
+
+			picture = generic_air_manufacturer_2
+
+
+			allowed = {
+				tag = SIL
+			}
+
+			research_bonus = {
+				air_equipment = 0.15
+			}
+
+			traits = { CAS_manufacturer }
+
+			equipment_bonus = {
+				# bomber airplanes
+			}
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+    industrial_concern = {
+
+		SIL_linke-hofmann-busch = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			picture = generic_industrial_concern_1
+
+			research_bonus = {
+				industry = 0.15
+			}
+
+			traits = { industrial_concern }
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+	            production_speed_arms_factory_factor = 0.1
+			}
+		}
+	}
+
+}

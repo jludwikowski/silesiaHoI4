@@ -1,0 +1,84 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			SIL = {
+				if = {
+					limit = { tag = SIL }
+					set_variable = { SIL_unrest_level = 0 }
+				}
+				country_event = {
+                    id = silesia.2
+                    days = 1200
+                }
+			}
+		}
+	}
+	on_release_as_free = {
+        effect = {
+        	THIS = {
+	            if = {
+	                limit = { FROM = { tag = SIL } }
+	                FROM = {
+	                    set_variable = { SIL_unrest_level = 0 }
+	                }
+	            }
+	            country_event = {
+                    id = silesia.2
+                    days = 1200
+                }
+	        }
+        }
+    }
+    on_release_as_puppet = {
+        effect = {
+        	THIS = {
+	            if = {
+	                limit = { FROM = { tag = SIL } }
+	                FROM = {
+	                    set_variable = { SIL_unrest_level = 0 }
+	                }
+	            }
+	            country_event = {
+                    id = silesia.2
+                    days = 1200
+                }
+	        }
+        }
+    }
+	on_declare_war = {
+	    effect = {
+	        if = {
+	            limit = {
+	                tag = GER
+	                FROM = {
+	                    tag = POL
+	                }
+	            }
+	            if = {
+	            	limit = {
+	            		SIL = {
+	                		has_country_flag = SIL_intervene_in_poland
+	            		}
+	            	}
+	            	SIL = {
+		                country_event = {
+		                    id = sil.3
+		                }
+		            }
+	            }
+	            if = {
+	            	limit = {
+	            		SIL = {
+	                		has_country_flag = SIL_join_germany
+	            		}
+	            	}
+	            	SIL = {
+		                country_event = {
+		                    id = sil.4
+		                }
+		            }
+	            }
+	        }
+	    }
+	}
+}

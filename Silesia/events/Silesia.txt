@@ -1,0 +1,85 @@
+add_namespace = SIL_german_unrest
+add_namespace = silesia
+
+country_event = {
+	id = silesia.1
+	title = SIL_german_uprising
+	desc = silesia.1.d
+	picture = GFX_report_event_peasant_revolt
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		name = silesia.1.a
+		ai_chance = {
+			factor = 50
+		}
+		effect_tooltip = {
+			remove_ideas = SIL_german_unrest_4
+		}
+	}
+}
+country_event = {
+    id = silesia.2
+    title = silesia.2.t
+    desc = silesia.2.desc
+    picture = GFX_report_event_generic_death
+
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    immediate = {
+        if = {
+            limit = {
+                has_country_leader = { character = SIL_hans_heinrich_xv }
+            }
+            promote_character = SIL_alexander_hochberg
+        }
+    }
+
+    option = {
+        name = SIL_silesia.2.a
+    }
+}
+country_event = {
+    id = silesia.3
+    title = silesia.3.t
+    desc = silesia.3.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = silesia.3.a
+
+        add_to_war = {
+            targeted_alliance = POL
+            enemy = GER
+        }
+    }
+
+    option = {
+        name = silesia.3.b
+    }
+}
+country_event = {
+    id = silesia.4
+    title = silesia.4.t
+    desc = silesia.4.d
+
+    is_triggered_only = yes
+
+    option = {
+        name = silesia.4.a
+
+        add_to_war = {
+            targeted_alliance = GER
+            enemy = POL
+        }
+    }
+
+    option = {
+        name = silesia.4.b
+    }
+}

@@ -1,0 +1,374 @@
+characters = {
+
+	# Józef Kożdoń
+	SIL_jozsef_kozdon = { 
+		name = SIL_jozsef_kozdon
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SIL_Jozef_iniszkiewicz
+				small = gfx/interface/ideas/portrait_SIL_jozef_iniszkiewicz_small.dds
+			}
+			
+		}
+
+		advisor={
+			slot = political_advisor
+			idea_token = SIL_jozsef_kozdon
+			available = {
+				NOT = {
+	                has_country_leader = {
+	                    character = SIL_jozsef_kozdon
+	                }
+	            }
+				OR = {
+					has_completed_focus = SIL_silesian_sejm 
+					has_completed_focus = SIL_the_silesian_advisory_board
+				}
+			}
+			allowed = {
+				original_tag = SIL
+			}
+			traits = {
+				SIL_silesian_loyalist_advisor 
+			}
+		}
+
+		country_leader = {
+			ideology = oligarchism
+			traits = { SIL_silesian_loyalist }
+			expire = "1953.1.1.1"
+			id = -1
+		}
+	}
+
+	# Carl Ulitzka
+	SIL_carl_ulitzka = { 
+		name = SIL_carl_ulitzka
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SIL_carl_ulitzka
+				small = gfx/interface/ideas/portrait_SIL_carl_ulitzka_small.dds
+			}
+		}
+
+		advisor={
+			slot = political_advisor
+			idea_token = SIL_carl_ulitzka
+			available = {
+                NOT = {
+                    has_country_leader = {
+                        character = SIL_carl_ulitzka
+                    }
+                }
+            }
+			allowed = {
+				original_tag = SIL
+			}
+			traits = {
+				SIL_silesian_spiritual_leader 
+			}
+		}
+
+		country_leader = {
+			ideology = oligarchism
+			traits = { SIL_silesian_spiritual_leader }
+			expire = "1953.1.1.1"
+			id = -1
+		}
+	}
+
+	# Alexander Hochberg
+	SIL_alexander_hochberg = { 
+		name = SIL_alexander_hochberg
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SIL_alexander_hochberg
+				small = GFX_portrait_SIL_alexander_hochberg_small
+			}
+		}
+
+		advisor = {
+            slot = army_chief
+            idea_token = SIL_alexander_hochberg
+            traits = { 
+                army_chief_offensive_2 
+            }
+        }
+
+		country_leader = {
+			ideology = despotism
+			traits = { SIL_prince_of_pless_trait }
+			expire = "1984.1.1.1"
+			id = -1
+		}
+	}
+
+	# Anton Jadasch
+	SIL_anton_jadasch = { 
+		name = SIL_anton_jadasch
+		portraits = {
+			civilian = {
+				large = GFX_portrait_portrait_europe_generic_1
+				small = GFX_idea_generic_political_advisor_europe_1
+			}
+			
+		}
+		country_leader = {
+			ideology = marxism
+			traits = { leftist_independent }
+			expire = "1954.1.1.1"
+			id = -1
+		}
+	}
+
+	# Ewald Latacz
+	SIL_ewald_latacz = { 
+		name = SIL_ewald_latacz
+		portraits = {
+			civilian = {
+				large = GFX_portrait_portrait_europe_generic_2
+				small = GFX_idea_generic_political_advisor_europe_2
+			}
+			
+		}
+		country_leader = {
+			ideology = falangism
+			traits = { unruly_falangist }
+			expire = "1953.1.1.1"
+			id = -1
+		}
+	}
+
+	# Konrad Markiton
+	SIL_konrad_markiton = { 
+		name = SIL_konrad_markiton
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_europe_3
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SIL_konrad_markiton
+			allowed = {
+				original_tag = SIL
+			}
+			traits = {
+				silent_workhorse
+			}
+		}
+	}
+
+
+	# Wojciech Korfanty (Born in Sadów, Upper Silesia)
+	SIL_wojciech_korfanty = {
+		name = "Wojciech Korfanty"
+		portraits = {
+			army = {
+				large = "GFX_portrait_POL_wojciech_korfanty"
+			}
+			civilian = {
+				large = "GFX_portrait_POL_wojciech_korfanty_civilian"
+			}
+		}
+		country_leader = {
+			ideology = conservatism
+			expire = "1960.1.1"
+			id = -1
+			traits = {
+				the_legitimist
+				military_modernizer
+			}
+		}
+
+		advisor = {
+            slot = army_chief
+            idea_token = SIL_wojciech_korfanty_chief
+            available = {
+				OR = {
+					has_completed_focus = SIL_silesian_sejm 
+					has_completed_focus = SIL_the_silesian_advisory_board
+				}
+			}
+			cost = 100
+            traits = { 
+                army_chief_offensive_3 
+            }
+        }
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SIL_wojciech_korfanty_advisor
+			available = {
+				OR = {
+					has_completed_focus = SIL_silesian_sejm 
+					has_completed_focus = SIL_the_silesian_advisory_board
+				}
+			}
+			traits = {
+				the_legitimist
+				military_modernizer
+			}
+		}
+	}
+
+	SIL_hans_heinrich_xv = {
+		name = "Hans Heinrich XV von Pless"
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SIL_hans_heinrich_xv
+			}
+		}
+		country_leader = {
+			ideology = despotism
+			traits = { 
+				the_legitimist
+				SIL_industry_magnate
+			}
+			expire = "1939.1.31.1"
+			id = -1
+		}
+	}
+
+	SIL_arkadiusz_bozek = {
+		name = "Arkadiusz Bożek"
+		portraits = {
+			civilian = {
+				small = "GFX_idea_generic_political_advisor_europe_1"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SIL_arkadiusz_bozek
+			allowed = {
+				original_tag = SIL
+			}
+			available = {
+				OR = {
+					has_completed_focus = SIL_silesian_sejm 
+					has_completed_focus = SIL_the_silesian_advisory_board
+				}
+			}
+			traits = {
+				SIL_activist_defender
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+	SIL_eduard_schulte = {
+		name = "Eduard Schulte"
+		portraits = {
+			civilian = {
+				small = "GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SLI_eduard_schulte
+			allowed = {
+				original_tag = SIL
+			}
+			traits = {
+				industry_magnate
+			}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+	}
+
+
+	# ==========================================
+	# CORPS COMMANDERS / GENERALS (4 Silesians)
+	# ==========================================
+
+	# 1. Johannes Blaskowitz (Born in Peterswalde, Silesia)
+	SIL_johannes_blaskowitz = {
+		name = "Johannes Blaskowitz"
+		portraits = {
+			army = {
+				large = "GFX_portrait_GER_johannes_blaskowitz"
+			}
+		}
+		advisor = {
+			slot = high_command
+			idea_token = SIL_johannes_blaskowitz
+			available = {
+				OR = {
+					has_completed_focus = SIL_silesian_sejm 
+					has_completed_focus = SIL_the_silesian_advisory_board
+				}
+			}
+			ledger = army
+			traits = { army_infantry_2 } # Gives them their advisor trait
+			cost = 100
+		}
+	}
+
+	# 2. Erwin von Witzleben (Born in Breslau, Silesia)
+	SIL_erwin_von_witzleben = {
+		name = "Erwin von Witzleben"
+		portraits = {
+			army = {
+				large = "GFX_portrait_europe_generic_land_2"
+			}
+		}
+		corps_commander = {
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = 0
+			traits = { old_guard career_officer cautious }
+		}
+		advisor = {
+			slot = high_command
+			idea_token = SIL_erwin_von_witzleben
+			ledger = army
+			traits = { army_artillery_2 }
+			cost = 100
+		}
+	}
+
+	# 3. Dietrich von Choltitz (Born in Wiese gräflich, Upper Silesia)
+	SIL_dietrich_von_choltitz = {
+		name = "Dietrich von Choltitz"
+		portraits = {
+			army = {
+				large = "GFX_portrait_europe_generic_land_1"
+			}
+		}
+		corps_commander = {
+			skill = 3
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 0
+			traits = { infantry_officer organizer fortress_buster }
+		}
+	}
+
+	# 4. Paul/Paweł Hassa (or local Silesian-born military leader native to the region)
+	# Using a placeholder structure for a native Upper Silesian officer of the era:
+	SIL_pawel_chrobok = {
+		name = "Paweł Chrobok"
+		portraits = {
+			army = {
+				large = "GFX_portrait_europe_generic_land_3"
+			}
+		}
+		corps_commander = {
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id = 0
+			traits = { organizer hill_fighter }
+	
+}

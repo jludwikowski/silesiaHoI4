@@ -1,0 +1,82 @@
+SIL_infiltration_category = {
+	
+	icon = GFX_decision_category_generic_crisis
+
+	allowed = {
+		original_tag = SIL
+	}
+
+	visible = {
+		has_country_flag = SIL_unlocked_infiltration_flag # Optional: ties to a prior focus if needed
+	}
+
+	priority = 120
+}
+
+SIL_goverment_category = {
+	icon = GFX_decision_category_generic_crisis
+
+	allowed = {
+		original_tag = SIL
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = SIL_hochberg_coronation
+			has_completed_focus = SIL_national_unity_congress
+			has_completed_focus = SIL_silesian_sejm
+			has_completed_focus = SIL_build_coalition
+			has_completed_focus = SIL_prepare_insurrection
+			has_completed_focus = SIL_breslau_party_congress
+		}
+	}
+
+	priority = 110
+}
+
+SIL_german_question_category = {
+	icon = generic_political_actions
+ 
+	allowed = { tag = SIL }
+ 
+	visible = {
+		has_completed_focus = SIL_adress_german_minority
+		NOT = { has_country_flag = SIL_german_question_resolved }
+	}
+	
+	priority = 200
+}
+
+SIL_national_identity_category = {
+	icon = generic_political_actions
+	allowed = { tag = SIL }
+	visible = { has_completed_focus = SIL_crossroads_nation }
+	priority = 150
+}
+ 
+
+SIL_central_bank_category = {
+	icon = GFX_decision_category_generic_industry
+	allowed = {
+		original_tag = SIL
+	}
+	visible = {
+		has_completed_focus = SIL_create_central_bank
+	}
+}
+
+SIL_research_category = {
+
+	icon = GFX_decision_category_generic_industry
+
+	allowed = {
+		original_tag = SIL
+	}
+
+	visible = {
+		has_completed_focus = SIL_the_silesian_university
+	}
+
+	priority = 100
+
+}

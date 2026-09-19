@@ -1,0 +1,36 @@
+opinion_modifiers = {
+	SIL_silesian_pact_opinion = {
+		value = 30
+	}
+	SIL_comintern_sympathizer = {
+		value = 50
+	}
+	SIL_recognized_monarchy = {
+		value = 15
+		decay = 0.1
+	}
+ 
+	SIL_pro_polish_alignment = {
+		value = 20
+		decay = 0.1
+	}
+ 
+	SIL_pro_german_alignment = {
+		value = 20
+		decay = 0.1
+	}
+ 
+	SIL_alarmed_by_berlin_ties = {
+		value = -15
+		decay = 0.1
+	}
+
+	SIL_amicable_border_settlement = {
+		value = 20
+		decay = 0.1
+	}
+	SIL_territorial_demands = {
+		value = -20
+		decay = 0.1
+	}
+}

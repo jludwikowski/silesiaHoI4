@@ -1,0 +1,741 @@
+SIL_infiltration_category = {
+    SIL_infiltrate_institutions = {
+        icon = generic_propaganda
+        
+        cost = 50
+        days_remove = 120
+        fire_only_once = yes
+        
+        allowed = {
+            tag = SIL
+        }
+        
+        available = {
+            has_political_power > 49
+        }
+        
+        visible = {
+            has_country_flag = SIL_unlocked_infiltration_flag # Optional: ties to a prior focus if needed
+        }
+
+        # Modifiers active during the 120 days
+        modifier = {
+            stability_factor = -0.05
+            political_power_gain = -0.15
+        }
+
+        # Effects applied instantly when finishing the 120 days (remove_effect)
+        remove_effect = {
+            add_popularity = {
+                ideology = communism
+                popularity = 0.10
+            }
+            # Sets the flag proving this task was completed, allowing your next focus to proceed
+            set_country_flag = sil_institutions_infiltrated_completed
+        }
+    }
+}
+
+SIL_goverment_category = {
+	SIL_create_spy_agency = {
+	    icon = generic_intelligence_agency
+
+	    available = {
+	        NOT = { has_intelligence_agency = yes }
+	    }
+
+	    visible = {
+	        NOT = { has_intelligence_agency = yes }
+	    }
+
+	    cost = 50
+	    fire_only_once = yes
+
+	    complete_effect = {
+	        create_intelligence_agency = yes
+	        if = {
+					limit = {
+						has_country_leader = {
+						    character = SIL_alexander_hochberg
+						}
+					}
+					SIL = {
+						add_country_leader_trait = SIL_secret_agent_prince
+					}
+			}
+	    }
+
+	    ai_will_do = {
+	        factor = 1
+	    }
+	}
+}
+
+SIL_central_bank_category = {
+    SIL_issue_government_bonds = {
+        icon = generic_decision
+        
+        cost = 100
+        fire_only_once = yes
+        
+        # The duration the decision effect remains active (2 years = 730 days)
+        days_remove = 730 
+        
+        allowed = {
+            original_tag = SIL
+        }
+        
+        available =  {
+            has_completed_focus = SIL_create_central_bank
+        }
+        
+        # Effects applied immediately when clicking the decision (starts the 2-year timer)
+        complete_effect = {
+            add_ideas = SIL_government_bonds_idea
+        }
+        
+        # Effects applied automatically when the 2-year timer runs out
+        remove_effect = {
+            remove_ideas = SIL_government_bonds_idea
+        }
+    }
+}
+
+SIL_research_category = {
+	SIL_polish_innovation = {
+		icon = generic_decision
+        cost = 50
+        fire_only_once = yes
+        allowed = {
+            original_tag = SIL
+        }
+        
+        available =  {
+            has_completed_focus = SIL_the_silesian_university
+        }
+
+        complete_effect = {
+            add_ideas = SIL_polish_innovation
+        }
+
+	}
+
+	SIL_german_engineering = {
+		icon = generic_decision
+        cost = 50
+        fire_only_once = yes
+        allowed = {
+            original_tag = SIL
+        }
+        
+        available =  {
+            has_completed_focus = SIL_the_silesian_university
+        }
+
+        complete_effect = {
+            add_ideas = SIL_german_engineering
+        }
+
+	}
+
+	SIL_czech_adaptability = {
+		icon = generic_decision
+        cost = 50
+        fire_only_once = yes
+        allowed = {
+            original_tag = SIL
+        }
+        
+        available =  {
+            has_completed_focus = SIL_the_silesian_university
+        }
+
+        complete_effect = {
+            add_tech_bonus = {
+			    name = SIL_czech_adaptability
+			    bonus = 0.33
+			    uses = 4
+			    category = infantry_weapons
+			    category = support_tech
+			    category = armor
+			    category = artillery
+			    category = air_equipment
+			    category = light_fighter
+			    category = cas_bomber
+			    category = naval_equipment
+			    category = electronics
+			    category = industry
+			}
+        }
+
+	}
+}
+
+
+SIL_national_identity_category = {
+ 
+	SIL_actually_german = {
+		icon = generic_political_discourse
+
+		available = {
+			has_completed_focus = SIL_crossroads_nation
+			any_owned_state = { is_core_of = GER }
+		}
+
+		visible = {
+			has_completed_focus = SIL_crossroads_nation
+		}
+
+		cost = 200
+		fire_only_once = yes
+		ai_will_do = { factor = 5 }
+
+		complete_effect = {
+			every_state = {
+				limit = { is_core_of = GER }
+				add_core_of = ROOT
+			}
+		}
+	}
+
+	SIL_actually_polish = {
+		icon = generic_political_discourse
+
+		available = {
+			has_completed_focus = SIL_crossroads_nation
+			any_owned_state = { is_core_of = POL }
+		}
+
+		visible = {
+			has_completed_focus = SIL_crossroads_nation
+		}
+
+		cost = 200
+		fire_only_once = yes
+		ai_will_do = { factor = 5 }
+
+		complete_effect = {
+			every_state = {
+				limit = { is_core_of = POL }
+				add_core_of = ROOT
+			}
+		}
+	}
+
+	SIL_actually_czech = {
+		icon = generic_political_discourse
+
+		available = {
+			has_completed_focus = SIL_crossroads_nation
+			any_owned_state = { is_core_of = CZE }
+		}
+
+		visible = {
+			has_completed_focus = SIL_crossroads_nation
+		}
+
+		cost = 200
+		fire_only_once = yes
+		ai_will_do = { factor = 5 }
+
+		complete_effect = {
+			every_state = {
+				limit = { is_core_of = CZE }
+				add_core_of = ROOT
+			}
+		}
+	}
+ 
+}
+
+SIL_german_question_category = {
+
+
+	SIL_german_people_dissatisfaction = {
+
+		allowed = { tag = SIL }
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			has_country_flag = SIL_conciliation_in_progress
+			has_country_flag = SIL_german_question_resolved
+		}
+		
+		activation = {
+			has_idea = SIL_german_unrest_1
+		}
+
+		visible = {
+			has_idea = SIL_german_unrest_1
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			activate_mission = SIL_german_people_resentment
+			swap_ideas = {
+				remove_idea = SIL_german_unrest_1
+				add_idea = SIL_german_unrest_2
+			}
+			hidden_effect = {
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+
+	SIL_german_people_resentment = {
+
+		allowed = { tag = SIL }
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			has_country_flag = SIL_conciliation_in_progress
+			has_country_flag = SIL_german_question_resolved
+		}
+		
+		activation = {
+			has_idea = SIL_german_unrest_2
+		}
+
+		visible = {
+			has_idea = SIL_german_unrest_2
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			activate_mission = SIL_german_people_anger
+			swap_ideas = {
+				remove_idea = SIL_german_unrest_2
+				add_idea = SIL_german_unrest_3
+			}
+			hidden_effect = {
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	SIL_german_people_anger = {
+
+		allowed = { tag = SIL }
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			has_country_flag = SIL_conciliation_in_progress
+			has_country_flag = SIL_german_question_resolved
+		}
+		
+		activation = {
+			has_idea = SIL_german_unrest_3
+		}
+
+		visible = {
+			has_idea = SIL_german_unrest_3
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			activate_mission = SIL_german_people_rebelion
+			swap_ideas = {
+				remove_idea = SIL_german_unrest_3
+				add_idea = SIL_german_unrest_4
+			}
+			hidden_effect = {
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	SIL_german_people_rebelion = {
+
+		allowed = { tag = SIL }
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			has_country_flag = SIL_conciliation_in_progress
+			has_country_flag = SIL_german_question_resolved
+		}
+		
+		activation = {
+			has_idea = SIL_german_unrest_4
+		}
+
+		visible = {
+			has_idea = SIL_german_unrest_4
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			if = { 
+					limit = {
+						has_government = neutrality
+					}
+					start_civil_war = {
+						ruling_party = neutrality
+				        ideology = fascism
+				        size = 0.4
+				        capital = 66
+				        states = { 66 }
+				    }
+			}
+			if = { 
+					limit = {
+						has_government = fascism
+					}
+					start_civil_war = {
+						ruling_party = fascism
+				        ideology = fascism
+				        size = 0.4
+				        capital = 66
+				        states = { 66 }
+				    }
+			}
+			if = { 
+					limit = {
+						has_government = communism
+					}
+					start_civil_war = {
+						ruling_party = communism
+				        ideology = fascism
+				        size = 0.4
+				        capital = 66
+				        states = { 66 }
+				    }
+			}
+			if = { 
+					limit = {
+						has_government = democratic
+					}
+					start_civil_war = {
+						ruling_party = democratic
+				        ideology = fascism
+				        size = 0.4
+				        capital = 66
+				        states = { 66 }
+				    }
+
+			}
+
+			division_template = {
+				name = "Milizbrigade "
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+		
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+			}
+			66 = { # Replace 123 with your target State ID
+	            create_unit = {
+	                division = "name = \"1st Milizbrigade \" division_template = \"Milizbrigade \" start_experience_factor = 0.3"
+	                owner = PREV
+	            }
+	            create_unit = {
+	                division = "name = \"2st Milizbrigade \" division_template = \"Milizbrigade \" start_experience_factor = 0.3"
+	                owner = PREV
+	            }
+	        }
+
+			hidden_effect = {
+				country_event = silesia.1
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+
+	#################### BRUTAL ROUTE ####################
+
+	SIL_forcible_resettlement = {
+		icon = generic_ignite_civil_war
+
+		available = {
+			has_completed_focus = SIL_adress_german_minority
+			NOT = { has_country_flag = SIL_conciliation_in_progress }
+			NOT = { has_country_flag = SIL_german_question_resolved }
+			check_variable = { var = SIL_unrest_level value > 0 }
+		}
+
+		visible = { NOT = { has_country_flag = SIL_german_question_resolved } }
+
+		cost = 50
+		days_remove = 50
+		fire_only_once = yes
+		ai_will_do = { factor = 3 }
+
+		complete_effect = {
+			custom_effect_tooltip = SIL_resettlement_cost_tt
+		}
+
+		# Removes 1 industrial_complex level per unrest tier, capped at 5,
+		# from a fixed state. Replace STATE_ID_CAPITAL with your real state id.
+		remove_effect = {
+			set_country_flag = SIL_german_question_resolved
+			66 = {
+				remove_building = { type = industrial_complex level = 1 }
+			}
+			if = {
+				limit = { has_idea = SIL_german_unrest_1 }
+				66 = { remove_building = { type = industrial_complex level = 1 } }
+			}
+			if = {
+				limit = { has_idea = SIL_german_unrest_2 }
+				66 = { remove_building = { type = industrial_complex level = 2 } }
+			}
+			if = {
+				limit = { has_idea = SIL_german_unrest_3 }
+				66 = { remove_building = { type = industrial_complex level = 2 } add_extra_state_shared_building_slots = -1}
+			}
+			if = {
+				limit = { has_idea = SIL_german_unrest_4 }
+				66 = { remove_building = { type = industrial_complex level = 2 } add_extra_state_shared_building_slots = -2}
+			}
+			
+			if = {
+		        limit = { has_idea = SIL_conciliation_programme }
+		        remove_ideas = SIL_conciliation_programme
+		    }
+		    if = {
+		        limit = { has_idea = SIL_german_unrest_1 }
+		        remove_ideas = SIL_german_unrest_1
+		    }
+		    if = {
+		        limit = { has_idea = SIL_german_unrest_2 }
+		        remove_ideas = SIL_german_unrest_2
+		    }
+		    if = {
+		        limit = { has_idea = SIL_german_unrest_3 }
+		        remove_ideas = SIL_german_unrest_3
+		    }
+		    if = {
+		        limit = { has_idea = SIL_german_unrest_4 }
+		        remove_ideas = SIL_german_unrest_4
+		    }
+			add_stability = -0.05
+		}
+
+	}
+ 
+		#################### CONCILIATORY ROUTE (2 stages) ####################
+ 
+		SIL_minority_rights_charter = {
+			icon = generic_political_discourse
+ 
+			available = {
+				has_completed_focus = SIL_adress_german_minority
+				NOT = { has_country_flag = SIL_conciliation_stage_1 }
+				NOT = { has_country_flag = SIL_german_question_resolved }
+			}
+ 
+			visible = {
+				NOT = { has_country_flag = SIL_conciliation_stage_1 }
+				NOT = { has_country_flag = SIL_german_question_resolved }
+			}
+ 
+			cost = 100
+			days_remove = 120
+			fire_only_once = yes
+			ai_will_do = { factor = 2 }
+ 
+			complete_effect = {
+				set_country_flag = SIL_conciliation_in_progress
+				add_ideas = SIL_conciliation_programme
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_dissatisfaction
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_dissatisfaction
+						days = 120
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_resentment
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_resentment
+						days = 110
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_anger
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_anger
+						days = 100
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_rebelion
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_rebelion
+						days = 90
+					}
+				}
+			}
+ 
+			remove_effect = {
+				set_country_flag = SIL_conciliation_stage_1
+				add_stability = 0.02
+			}
+		}
+ 
+		SIL_bilingual_administration = {
+			icon = generic_political_discourse
+ 
+			available = {
+				has_country_flag = SIL_conciliation_stage_1
+				NOT = { has_country_flag = SIL_conciliation_stage_2 }
+				NOT = { has_country_flag = SIL_german_question_resolved }
+			}
+ 
+			visible = {
+				has_country_flag = SIL_conciliation_stage_1
+				NOT = { has_country_flag = SIL_conciliation_stage_2 }
+			}
+ 
+			cost = 150
+			days_remove = 120
+			fire_only_once = yes
+			ai_will_do = { factor = 2 }
+ 
+			remove_effect = {
+				set_country_flag = SIL_german_question_resolved
+				clr_country_flag = SIL_conciliation_stage_1
+			    if = {
+			        limit = { has_idea = SIL_conciliation_programme }
+			        remove_ideas = SIL_conciliation_programme
+			    }
+			    if = {
+			        limit = { has_idea = SIL_german_unrest_1 }
+			        remove_ideas = SIL_german_unrest_1
+			    }
+			    if = {
+			        limit = { has_idea = SIL_german_unrest_2 }
+			        remove_ideas = SIL_german_unrest_2
+			    }
+			    if = {
+			        limit = { has_idea = SIL_german_unrest_3 }
+			        remove_ideas = SIL_german_unrest_3
+			    }
+			    if = {
+			        limit = { has_idea = SIL_german_unrest_4 }
+			        remove_ideas = SIL_german_unrest_4
+			    }
+			    clr_country_flag = SIL_conciliation_stage_1
+			    add_stability = 0.02
+			}
+
+			complete_effect = {
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_dissatisfaction
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_dissatisfaction
+						days = 120
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_resentment
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_resentment
+						days = 110
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_anger
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_anger
+						days = 100
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = SIL_german_people_rebelion
+					}
+					add_days_mission_timeout  = {
+						mission = SIL_german_people_rebelion
+						days = 90
+					}
+				}
+			}
+		}
+ 
+ 
+	}
+

@@ -1,0 +1,2831 @@
+focus_tree = {
+	id = SIL_focus_tree
+	default = no
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = SIL
+		}
+	}
+
+	# ============================================================
+	# ROOT / NATIONAL DEVELOPMENT
+	# ============================================================
+
+	focus = {
+		id = SIL_the_silesian_question
+		icon = GFX_goal_generic_political_pressure
+		x = 14
+		y = 0
+		cost = 5
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.1
+		}
+	}
+
+	focus = {
+		id = SIL_reorganize_administration
+		icon = GFX_goal_generic_demand_territory
+		x = 14
+		y = 1
+		cost = 10
+		prerequisite = { focus = SIL_the_silesian_question }
+		mutually_exclusive = {
+			focus = SIL_leave_german_administration
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SIL_provisionary_goverment
+				add_idea = SIL_new_silesian_goverment
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_leave_german_administration
+		icon = GFX_goal_generic_political_pressure
+		x = 12
+		y = 1
+		cost = 5
+		prerequisite = { focus = SIL_the_silesian_question }
+		mutually_exclusive = {
+			focus = SIL_reorganize_administration
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SIL_provisionary_goverment
+				add_idea = SIL_german_goverment
+			}
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = SIL_organize_political_parties
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 12
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = SIL_leave_german_administration
+			focus = SIL_reorganize_administration
+		}
+		mutually_exclusive = {
+			focus = SIL_control_the_goverment
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			add_political_power = 120
+			add_popularity = { 
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_popularity = { 
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_control_the_goverment
+		icon = GFX_focus_generic_treaty
+		x = 14
+		y = 2
+		cost = 10
+		prerequisite = { 
+			focus = SIL_leave_german_administration
+			focus = SIL_reorganize_administration
+		}
+		mutually_exclusive = {
+			focus = SIL_organize_political_parties
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SIL_new_silesian_goverment
+				add_idea = SIL_new_silesian_goverment_controlled
+			}
+			add_popularity = { 
+				ideology = neutrality
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_the_silesian_advisory_board
+		icon = GFX_focus_generic_treaty
+		x = 16
+		y = 3
+		cost = 5
+		prerequisite = { 
+			focus = SIL_control_the_goverment
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = { 
+				ideology = neutrality
+				popularity = 0.05
+			}
+			add_corps_commander_role = {
+            	character = SIL_johannes_blaskowitz
+				skill = 4
+				attack_skill = 4
+				defense_skill = 4
+				planning_skill = 3
+				logistics_skill = 3
+				legacy_id = 0
+				traits = { brilliant_strategist infantry_officer disciplinarian }
+        	}
+        	add_field_marshal_role = {
+	            character = SIL_wojciech_korfanty
+				skill = 4
+				attack_skill = 4
+				defense_skill = 4
+				planning_skill = 4
+				logistics_skill = 3
+				legacy_id = 0
+				traits = { offensive_doctrine logistics_wizard infantry_expert hill_fighter }
+        	}
+		}
+	}
+
+	focus = {
+		id = SIL_create_central_bank
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 20
+		y = 2
+		cost = 10
+		prerequisite = { 
+			focus = SIL_leave_german_administration
+			focus = SIL_reorganize_administration
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = SIL_central_bank
+		}
+	}
+
+	focus = {
+		id = SIL_adress_german_minority
+		icon = GFX_goal_support_fascism
+		x = 22
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = SIL_leave_german_administration
+			focus = SIL_reorganize_administration
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_mark
+		icon = GFX_focus_generic_currency_reforms
+		x = 20
+		y = 3
+		cost = 10
+		prerequisite = { 
+			focus = SIL_create_central_bank
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = SIL_central_bank
+				add_idea = SIL_currency
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_crossroads_nation
+		icon = GFX_goal_support_democracy
+		x = 22
+		y = 3
+		cost = 10
+		prerequisite = { 
+			focus = SIL_adress_german_minority
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_crossroads_nation
+			add_stability = 0.05
+		}
+	}
+
+	##################################################
+	# DEMOCRATIC PATH
+	##################################################
+
+	focus = {
+		id = SIL_organize_elections
+		icon = GFX_goal_support_democracy
+		x = 12
+		y = 3
+		cost = 10
+		prerequisite = { 
+			focus = SIL_leave_german_administration
+			focus = SIL_reorganize_administration
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			add_political_power = 120
+			set_politics = {
+				ruling_party = democratic
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_recreating_KPO # Komunistische Partei Oberschlesiens
+		icon = GFX_goal_generic_war_with_comintern
+		x = 10
+		y = 4
+		cost = 10
+		prerequisite = { 
+			focus = SIL_organize_elections
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = { 
+				ideology = communism
+				popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_sejm
+		icon = GFX_goal_support_democracy
+		x = 12
+		y = 4
+		cost = 10
+		prerequisite = { 
+			focus = SIL_organize_elections
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			add_ideas = SIL_silesian_parlament
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SIL_align_poland
+		icon = GFX_focus_POL_nationalist_education
+		x = 12
+		y = 4
+		cost = 10
+		prerequisite = { 
+			focus = SIL_silesian_sejm
+		}
+		available = {
+			has_army_manpower = { size > 199999 }
+		}
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			set_country_flag = SIL_intervene_in_poland
+			add_political_power = 50
+			POL = {
+				add_opinion_modifier = { target = SIL modifier = SIL_silesian_pact_opinion }
+			}
+			SIL = {
+	        		transfer_state = 762
+	    	}
+	    	if = {
+			    limit = {
+			        POL = {
+			            controls_state = 72
+			        }
+			    }
+			    SIL = {
+	        		transfer_state = 72
+	        		add_state_core = 72
+	    		}
+			}
+		}
+	}
+
+	######################################################
+	#Communist path
+	######################################################
+
+	focus = {
+		id = SIL_communist_consolidation
+		icon = GFX_goal_generic_political_pressure
+		x = 10
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_recreating_KPO }
+		mutually_exclusive = { focus = SIL_the_prince_of_pless }
+		available = { NOT = { has_government = communism } }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = { ideology = communism popularity = 0.03 }
+			add_stability = -0.02
+			custom_effect_tooltip = SIL_kpo_cells_tt
+			hidden_effect = { set_country_flag = SIL_kpo_organized }
+		}
+	}
+ 
+	focus = {
+		id = SIL_moscow_line
+		icon = GFX_SOV_the_stalin_constitutiony_ccp_2d_sov_compatibility
+		x = 9
+		y = 6
+		cost = 10
+		prerequisite = { focus = SIL_communist_consolidation }
+		mutually_exclusive = { focus = SIL_national_road }
+		available = { has_country_flag = SIL_kpo_organized }
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 2
+				country_exists = SOV
+				SOV = { has_government = communism }
+			}
+		}
+		completion_reward = {
+			add_ideas = SIL_socialist_revolutionaries_activity
+			add_political_power = 50
+			add_ideas = SIL_comintern_liaison
+			custom_effect_tooltip = SIL_moscow_line_tt
+		}
+	}
+ 
+	focus = {
+		id = SIL_national_road
+		icon = GFX_goal_generic_national_unity
+		x = 11
+		y = 6
+		cost = 5
+		prerequisite = { focus = SIL_communist_consolidation }
+		mutually_exclusive = { focus = SIL_moscow_line }
+		available = { has_country_flag = SIL_kpo_organized }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = SIL_national_communism_doctrine
+			custom_effect_tooltip = SIL_national_road_tt
+		}
+	}
+ 
+	# Moscow: agitation deliberately escalates unrest to build revolutionary momentum
+	focus = {
+		id = SIL_soviet_agitators
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 9
+		y = 7
+		cost = 5
+		prerequisite = { focus = SIL_moscow_line }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = 0.05 }
+			add_stability = -0.03
+			add_war_support = 0.02
+			if = {
+				limit = { country_exists = SOV }
+				SOV = { add_opinion_modifier = { target = ROOT modifier = SIL_comintern_sympathizer } }
+			}
+			set_country_flag = SIL_unlocked_infiltration_flag
+			custom_effect_tooltip = SIL_soviet_agitators_tt
+		}
+	}
+ 
+ 
+	# National: coalition with social democrats / agrarian left broadens the base
+	focus = {
+		id = SIL_build_coalition
+		icon = GFX_focus_SOV_the_path_of_marxism_leninism
+		x = 11
+		y = 7
+		cost = 10
+		prerequisite = { focus = SIL_national_road }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = { ideology = communism popularity = 0.05 }
+			add_stability = 0.03
+			add_ideas = SIL_political_activity
+			custom_effect_tooltip = SIL_build_coalition_tt
+		}
+	}
+ 
+	# Moscow: stockpile arms, plan the coup with Soviet military attaches
+	focus = {
+		id = SIL_prepare_insurrection
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		x = 9
+		y = 8
+		cost = 10
+		prerequisite = { focus = SIL_soviet_agitators }
+		available = { 
+			communism > 0.35
+			has_country_flag = sil_institutions_infiltrated_completed 
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = 0.03
+			custom_effect_tooltip = SIL_prepare_insurrection_tt
+		}
+	}
+ 
+	# National: full campaign push for a genuine electoral majority
+	focus = {
+		id = SIL_win_public_mandate
+		icon = GFX_focus_generic_soviet_politics
+		x = 11
+		y = 8
+		cost = 5
+		prerequisite = { focus = SIL_build_coalition }
+		available = { communism > 0.35 }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			set_country_flag = SIL_intervene_in_poland
+			add_popularity = { ideology = communism popularity = 0.07 }
+			add_stability = 0.03
+			add_political_power = 120
+			custom_effect_tooltip = SIL_win_public_mandate_tt
+		}
+	}
+ 
+	#################### y=10 — SEIZE POWER (the actual endings) ####################
+ 
+	# ENDING A: violent coup, backed by Moscow. Requires real majority sympathy
+	# (communism > 0.5) — otherwise this focus stays greyed out, which is the
+	# point: you cannot take power until you've actually earned the support.
+	focus = {
+		id = SIL_communist_coup
+		icon = GFX_SOV_the_glory_of_the_red_army_ccp_2d_sov_compatibility
+		x = 9
+		y = 9
+		cost = 10
+		prerequisite = { focus = SIL_prepare_insurrection }
+		available = {
+			communism > 0.5
+			country_exists = SOV
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_stability = -0.15
+			add_war_support = 0.1
+			remove_ideas = SIL_socialist_revolutionaries_activity
+			set_politics = {
+				ruling_party = communism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			if = {
+				limit = { country_exists = SOV }
+				SOV = { puppet = ROOT }
+			}
+			custom_effect_tooltip = SIL_communist_coup_tt
+		}
+	}
+ 
+	# ENDING B: peaceful electoral transition. Same popularity threshold, but
+	# taken through the ballot box, so it's far less destabilizing.
+	focus = {
+		id = SIL_electoral_victory
+		icon = GFX_focus_YUG_pan_slavic_congress
+		x = 11
+		y = 9
+		cost = 10
+		prerequisite = { focus = SIL_win_public_mandate }
+		available = {
+			communism > 0.5
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_silesian_identity
+			set_politics = {
+				ruling_party = communism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			custom_effect_tooltip = SIL_electoral_victory_tt
+		}
+	}
+
+	focus = {
+		id = SIL_socialist_economy
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 11
+		y = 11
+		cost = 10
+		prerequisite = { 
+			focus = SIL_electoral_victory 
+			focus = SIL_communist_coup
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_workers_state
+			custom_effect_tooltip = SIL_electoral_victory_tt
+		}
+	}
+
+	focus = {
+		id = SIL_nationalize_factories
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 5
+		y = 11
+		cost = 10
+		prerequisite = { 
+			focus = SIL_electoral_victory 
+			focus = SIL_communist_coup
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_peoples_army
+		icon = GFX_SOV_the_glory_of_the_red_army_ccp_2d_sov_compatibility
+		x = 7
+		y = 11
+		cost = 10
+		prerequisite = { 
+			focus = SIL_electoral_victory 
+			focus = SIL_communist_coup
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_peoples_army
+			army_experience = 20
+			division_template = {
+				name = "Ślōnskŏ Dywizja Ludowŏ"
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+		
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 67 } #Gliwicy
+				create_unit = {
+					division = "name = \"Ślōnskŏ Dywizja Ludowŏ\" division_template = \"Ślōnskŏ Dywizja Ludowŏ\" start_experience_factor = 0.4" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"Ślōnskŏ Dywizja Ludowŏ\" division_template = \"Ślōnskŏ Dywizja Ludowŏ\" start_experience_factor = 0.4" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"Ślōnskŏ Dywizja Ludowŏ\" division_template = \"Ślōnskŏ Dywizja Ludowŏ\" start_experience_factor = 0.4" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"Ślōnskŏ Dywizja Ludowŏ\" division_template = \"Ślōnskŏ Dywizja Ludowŏ\" start_experience_factor = 0.4" 
+					owner = SIL
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_red_army_officers
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 9
+		y = 11
+		cost = 5
+		prerequisite = { 
+			focus = SIL_communist_coup
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_red_army_officers
+		}
+	}
+
+	focus = {
+		id = SIL_soviet_science_cooperation
+		icon = GFX_focus_research
+		x = 3
+		y = 11
+		cost = 10
+
+		available = {
+			if = {
+				limit = { amount_research_slots > 3 }
+				has_idea = SIL_polish_innovation
+				has_idea = SIL_german_engineering
+			}
+		}
+
+		prerequisite = { 
+			focus = SIL_electoral_victory 
+			focus = SIL_communist_coup
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	# ============================================================
+	# NEUTRALITY BRANCH
+	# ============================================================
+
+	focus = {
+		id = SIL_national_renewal
+		icon = GFX_goal_generic_national_unity
+		x = 18
+		y = 3
+		cost = 10
+		prerequisite = { focus = SIL_control_the_goverment }
+		ai_will_do = { factor = 6 }
+		completion_reward = {
+			add_ideas = SIL_fighting_spirit
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			add_popularity = { ideology = neutrality popularity = 0.05 }
+		}
+	}
+
+	#################### DUCHY (linear, 2-tier fork after capstone) ####################
+
+	focus = {
+		id = SIL_the_prince_of_pless
+		icon = GFX_focus_generic_monarchy_1
+		x = 16
+		y = 4
+		cost = 5
+		mutually_exclusive = {
+			focus = SIL_consolitate_power
+		}
+		prerequisite = { focus = SIL_national_renewal }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			if = {
+		        limit = {
+		            date < 1939.1.31
+		        }
+		        promote_character = SIL_hans_heinrich_xv
+		    }
+		    else = {
+		        promote_character = SIL_alexander_hochberg
+		    }
+			add_stability = 0.03
+			hidden_effect = { 
+				set_country_flag = SIL_duchy
+				set_cosmetic_tag = SIL_duchy
+			}
+			custom_effect_tooltip = SIL_the_prince_of_pless_tt
+		}
+	}
+
+	focus = {
+		id = SIL_call_the_diet
+		icon = GFX_focus_rom_royal_dictatorship
+		x = 18
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_the_prince_of_pless }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			add_ideas = SIL_duchy_diet
+		}
+	}
+
+	focus = {
+		id = SIL_prince_military_training
+		icon = GFX_focus_GER_demonstration_of_military_achievements
+		x = 20
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = { character = SIL_alexander_hochberg }
+		}
+		prerequisite = { focus = SIL_the_prince_of_pless }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			SIL = {
+				add_country_leader_trait = SIL_military_prince
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_address_the_people
+		icon = GFX_focus_generic_military_academy
+		x = 14
+		y = 5
+		cost = 5
+		prerequisite = { focus = SIL_the_prince_of_pless }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.03
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = SIL_address_nobility
+		icon = GFX_goal_generic_national_unity
+		x = 16
+		y = 5
+		cost = 5
+		prerequisite = { focus = SIL_the_prince_of_pless }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = SIL_petition_foreign_recognition
+		icon = GFX_goal_generic_alliance
+		x = 16
+		y = 6
+		cost = 10
+		prerequisite = { focus = SIL_address_nobility }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			every_country = {
+				limit = {
+					OR = {
+						tag = POL
+						tag = CZE
+						tag = ENG
+					}
+				}
+				add_opinion_modifier = { target = ROOT modifier = SIL_recognized_monarchy }
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_hochberg_coronation
+		icon = GFX_focus_generic_monarchy_2
+		x = 16
+		y = 7
+		cost = 5
+		prerequisite = { focus = SIL_petition_foreign_recognition }
+		mutually_exclusive = { focus = SIL_five_year_plan }
+		available = { has_country_flag = SIL_duchy }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_legitimate_dynasty
+		}
+	}
+
+	focus = {
+		id = SIL_look_to_warsaw
+		icon = GFX_goal_generic_alliance
+		x = 15
+		y = 8
+		cost = 5
+		prerequisite = { focus = SIL_hochberg_coronation }
+		mutually_exclusive = { focus = SIL_look_to_berlin }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_opinion_modifier = { target = POL modifier = SIL_pro_polish_alignment }
+			set_country_flag = SIL_intervene_in_poland
+		}
+	}
+
+	focus = {
+		id = SIL_duchy_constitution
+		icon = GFX_goal_generic_alliance
+		x = 13
+		y = 8
+		cost = 5
+		prerequisite = { focus = SIL_hochberg_coronation }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			if = {
+	            limit = {
+	                has_idea = SIL_new_silesian_goverment_controlled
+	            }
+				swap_ideas = {
+					remove_idea = SIL_new_silesian_goverment_controlled
+					add_idea = SIL_new_silesian_goverment_controlled_duchy
+				}
+			}
+			if = {
+	            limit = {
+	                has_idea = SIL_german_goverment
+	            }
+				swap_ideas = {
+					remove_idea = SIL_german_goverment
+					add_idea = SIL_german_goverment_duchy
+				}
+			}
+			if = {
+					limit = {
+						has_country_leader = {
+						    character = SIL_jozsef_kozdon
+						}
+					}
+					SIL = {
+						add_country_leader_trait = SIL_father_of_silesia
+					}
+			} else = {
+				SIL_jozsef_kozdon = {
+					add_trait = {
+						trait = SIL_father_of_silesia
+						slot = political_advisor
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_look_to_berlin
+		icon = GFX_goal_generic_dangerous_deal
+		x = 17
+		y = 8
+		cost = 5
+		prerequisite = { focus = SIL_hochberg_coronation }
+		mutually_exclusive = { focus = SIL_look_to_warsaw }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			add_opinion_modifier = { target = GER modifier = SIL_pro_german_alignment }
+			set_country_flag = SIL_join_germany
+		}
+	}
+
+	focus = {
+		id = SIL_polish_silesian_friendship_treaty
+		icon = GFX_focus_generic_polish_deal
+		x = 15
+		y = 9
+		cost = 5
+		prerequisite = { focus = SIL_look_to_warsaw }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_opinion_modifier = { target = POL modifier = SIL_pro_polish_alignment }
+			if = {
+				limit = { country_exists = POL POL = { is_in_faction = yes } }
+				POL = { add_to_faction = ROOT }
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_hochberg_berlin_accords
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 17
+		y = 9
+		cost = 5
+		prerequisite = { focus = SIL_look_to_berlin }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_opinion_modifier = { target = POL modifier = SIL_alarmed_by_berlin_ties }
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_legion_in_exile
+		icon = GFX_focus_generic_manpower
+		x = 15
+		y = 10
+		cost = 5
+		prerequisite = { focus = SIL_polish_silesian_friendship_treaty }
+		available = {
+			surrender_progress > 0.6
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_legion_in_exile_spirit
+			custom_effect_tooltip = SIL_silesian_legion_in_exile_tt
+		}
+	}
+
+	focus = {
+		id = SIL_economic_union_with_reich
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 17
+		y = 10
+		cost = 10
+		prerequisite = { focus = SIL_hochberg_berlin_accords }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_reich_economic_integration
+			set_country_flag = SIL_pro_german_alignment
+		}
+	}
+
+	#################### GUARDIAN (has an optional leaf, 1-tier fork after capstone) ####################
+
+	focus = {
+		id = SIL_consolitate_power
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 23
+		y = 4
+		cost = 5
+		prerequisite = { focus = SIL_national_renewal }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			hidden_effect = { set_country_flag = SIL_guardian_mandate_taken }
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_renewal_program
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 23
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_consolitate_power }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			every_owned_state = {
+				limit = { is_core_of = ROOT }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	# Optional leaf — nothing downstream requires this. Duchy has no equivalent.
+	focus = {
+		id = SIL_appeal_to_reluctant_leader
+		icon = GFX_goal_generic_military_deal
+		x = 14
+		y = 3
+		cost = 5
+		prerequisite = { focus = SIL_control_the_goverment }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			promote_character = SIL_jozsef_kozdon
+			activate_advisor = SIL_carl_ulitzka
+		}
+	}
+
+	focus = {
+		id = SIL_ban_extremist_parties
+		icon = GFX_goal_generic_political_pressure
+		x = 23
+		y = 6
+		cost = 5
+		prerequisite = { focus = SIL_silesian_renewal_program }
+		mutually_exclusive = { focus = SIL_schlesische_volksbewegung }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = -0.05 }
+			add_popularity = { ideology = communism popularity = -0.05 }
+			add_political_power = 50
+			add_ideas = SIL_state_security_apparatus
+		}
+	}
+
+	focus = {
+		id = SIL_national_unity_congress
+		icon = GFX_goal_generic_propaganda
+		x = 23
+		y = 7
+		cost = 10
+		prerequisite = { focus = SIL_ban_extremist_parties }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SIL_five_year_plan
+		icon = GFX_focus_rom_royal_dictatorship
+		x = 23
+		y = 8
+		cost = 10
+		prerequisite = { focus = SIL_national_unity_congress }
+		available = { has_country_flag = SIL_guardian_mandate_taken }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			set_country_flag = SIL_guardian_state
+		}
+	}
+
+	focus = {
+		id = SIL_industrial_oligarchy
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 22
+		y = 9
+		cost = 5
+		prerequisite = { focus = SIL_five_year_plan }
+		mutually_exclusive = { focus = SIL_national_constitution }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = SIL_national_constitution
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 24
+		y = 9
+		cost = 10
+		prerequisite = { focus = SIL_five_year_plan }
+		mutually_exclusive = { focus = SIL_industrial_oligarchy }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 100
+			if = {
+	            limit = {
+	                has_idea = SIL_new_silesian_goverment_controlled
+	            }
+				swap_ideas = {
+					remove_idea = SIL_new_silesian_goverment_controlled
+					add_idea = SIL_new_silesian_goverment_controlled_nationalists
+				}
+			}
+			if = {
+	            limit = {
+	                has_idea = SIL_german_goverment
+	            }
+				swap_ideas = {
+					remove_idea = SIL_german_goverment
+					add_idea = SIL_german_goverment_nationalists
+				}
+			}
+			if = {
+					limit = {
+						has_country_leader = {
+						    character = SIL_jozsef_kozdon
+						}
+					}
+					SIL = {
+						add_country_leader_trait = SIL_father_of_silesia
+					}
+			} else = {
+				SIL_jozsef_kozdon = {
+					add_trait = {
+						trait = SIL_father_of_silesia
+						slot = political_advisor
+					}
+				}
+			}
+		}
+		
+
+	}
+
+	focus = {
+		id = SIL_national_armaments_board
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 22
+		y = 10
+		cost = 10
+		prerequisite = { focus = SIL_industrial_oligarchy }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_nationalized_industry
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = SIL_peasant_worker_compact
+		icon = GFX_goal_generic_national_unity
+		x = 24
+		y = 10
+		cost = 10
+		prerequisite = { focus = SIL_national_constitution }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_compact_of_labor
+			add_stability = 0.05
+		}
+	}
+
+	#################### 4 SHARED, NON-TRUNK FOCUSES (OR-unlocked, center column) ####################
+
+	# Unlocks once EITHER address_nobility (Duchy) OR silesian_renewal_program
+	# (Guardian) is done. One prerequisite block, two focuses listed = OR.
+	focus = {
+		id = SIL_officer_corps_expansion
+		icon = GFX_goal_generic_small_arms
+		x = 21
+		y = 6
+		cost = 10
+		prerequisite = { focus = SIL_prince_military_training focus = SIL_silesian_renewal_program }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_proffesional_officer_corps
+		}
+	}
+
+	# Unlocks once EITHER petition_foreign_recognition (Duchy) OR
+	# ban_extremist_parties (Guardian) is done.
+	focus = {
+		id = SIL_national_education
+		icon = GFX_focus_research
+		x = 21
+		y = 8
+		cost = 10
+		prerequisite = { focus = SIL_hochberg_coronation focus = SIL_national_unity_congress }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_silesian_academy_idea
+		}
+	}
+
+	focus = {
+		id = SIL_national_identity
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 19
+		y = 8
+		cost = 5
+		prerequisite = { focus = SIL_hochberg_coronation focus = SIL_national_unity_congress }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_silesian_identity
+		}
+	}
+
+	# Unlocks once EITHER capstone is reached — available regardless of
+	# which government you actually chose.
+	focus = {
+		id = SIL_silesian_academy
+		icon = GFX_focus_research
+		x = 20
+		y = 11
+		cost = 10
+		prerequisite = { focus = SIL_national_education focus = SIL_the_true_reich }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	# Unlocks from ANY of the four deep sub-choices on either side.
+	focus = {
+		id = SIL_military_state
+		icon = GFX_goal_generic_small_arms
+		x = 18
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = SIL_polish_silesian_friendship_treaty
+			focus = SIL_hochberg_berlin_accords
+			focus = SIL_industrial_oligarchy
+			focus = SIL_national_constitution
+			focus = SIL_the_true_reich
+			focus = SIL_reichsgau_schlesien
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = SIL_military_state
+		}
+	}
+
+
+	##############################################################
+	# FACIST
+	##############################################################
+
+
+	focus = {
+		id = SIL_schlesische_volksbewegung
+		icon = GFX_focus_generic_manpower
+		x = 27
+		y = 6
+		cost = 10
+		prerequisite = { focus = SIL_silesian_renewal_program }
+		mutually_exclusive = { focus = SIL_ban_extremist_parties }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.08 }
+			add_ideas = SIL_volksbewegung_1
+			hidden_effect = { set_country_flag = SIL_volksbewegung_organized }
+		}
+	}
+ 
+	focus = {
+		id = SIL_breslau_party_congress
+		icon = GFX_goal_generic_propaganda
+		x = 27
+		y = 7
+		cost = 10
+		prerequisite = { focus = SIL_schlesische_volksbewegung }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SIL_volksbewegung_1
+				add_idea = SIL_volksbewegung_2
+			}
+		}
+	}
+ 
+	#################### FORK ####################
+ 
+	focus = {
+		id = SIL_reject_prussian_primacy
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 26
+		y = 8
+		cost = 10
+		prerequisite = { focus = SIL_breslau_party_congress }
+		mutually_exclusive = { focus = SIL_accommodation_with_berlin }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			add_opinion_modifier = { target = GER modifier = SIL_alarmed_by_berlin_ties }
+			add_war_support = 0.05
+		}
+	}
+ 
+	focus = {
+		id = SIL_accommodation_with_berlin
+		icon = GFX_goal_generic_dangerous_deal
+		x = 28
+		y = 8
+		cost = 10
+		prerequisite = { focus = SIL_breslau_party_congress }
+		mutually_exclusive = { focus = SIL_reject_prussian_primacy }
+		ai_will_do = { factor = 6 }
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			add_opinion_modifier = { target = GER modifier = SIL_pro_german_alignment }
+			set_country_flag = SIL_join_germany
+		}
+	}
+ 
+	#################### DEEPEN ####################
+ 
+	focus = {
+		id = SIL_schlesische_landwehr
+		icon = GFX_goal_generic_army_effort
+		x = 26
+		y = 9
+		cost = 10
+		prerequisite = { focus = SIL_reject_prussian_primacy }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 20000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 3000
+				producer = ROOT
+			}
+		}
+	}
+ 
+	focus = {
+		id = SIL_industrial_concessions
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 28
+		y = 9
+		cost = 10
+		prerequisite = { focus = SIL_accommodation_with_berlin }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			66 = {
+				if = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			67 = {
+				if = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+ 
+	#################### ENDINGS ####################
+ 
+	focus = {
+		id = SIL_the_true_reich
+		icon = GFX_goal_generic_territory_or_war
+		x = 26
+		y = 10
+		cost = 10
+		prerequisite = { focus = SIL_schlesische_landwehr }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.1 }
+			add_war_support = 0.1
+			swap_ideas = {
+				remove_idea = SIL_volksbewegung_2
+				add_idea = SIL_volksbewegung_3_schism
+			}
+			set_country_flag = SIL_schism_declared
+			set_country_flag = SIL_join_germany
+		}
+	}
+ 
+	focus = {
+		id = SIL_reichsgau_schlesien
+		icon = GFX_goal_generic_alliance
+		x = 28
+		y = 10
+		cost = 10
+		prerequisite = { focus = SIL_industrial_concessions }
+		available = { country_exists = GER }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.1 }
+			swap_ideas = {
+				remove_idea = SIL_volksbewegung_2
+				add_idea = SIL_volksbewegung_3_client
+			}
+			if = {
+				limit = { country_exists = GER GER = { is_in_faction = yes } }
+				GER = { add_to_faction = ROOT }
+			}
+			set_country_flag = SIL_berlin_client
+		}
+	}
+
+	##############################################################
+	# CLAIM
+	##############################################################
+
+	focus = {
+		id = SIL_claim_zaolzie
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 14
+		y = 12
+		cost = 5
+		prerequisite = { focus = SIL_military_state }
+		bypass = { 72 = { is_core_of = ROOT } }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 30
+			72 = {
+				add_core_of = ROOT
+				add_claim_by = ROOT
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = POL
+				generator = { 72 }
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_claim_katowice
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 22
+		y = 12
+		cost = 5
+		prerequisite = { focus = SIL_military_state }
+		bypass = { 762 = { is_core_of = ROOT } }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 30
+			762 = {
+				add_core_of = ROOT
+				add_claim_by = ROOT
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = POL
+				generator = { 762 }
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_negotiate_czeski_slonsk
+		icon = GFX_goal_generic_alliance
+		x = 16
+		y = 13
+		cost = 10
+		prerequisite = { focus = SIL_military_state }
+		mutually_exclusive = { focus = SIL_claim_czeski_slonsk }
+		bypass = { 74 = { is_core_of = ROOT } }
+		available = { country_exists = CZE }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			add_stability = 0.03
+			CZE = {
+				add_opinion_modifier = { target = ROOT modifier = SIL_amicable_border_settlement }
+			}
+			74 = {
+				add_core_of = ROOT
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = CZE
+				generator = { 74 }
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_claim_czeski_slonsk
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 20
+		y = 13
+		cost = 5
+		prerequisite = { focus = SIL_military_state }
+		mutually_exclusive = { focus = SIL_negotiate_czeski_slonsk }
+		bypass = { 74 = { is_core_of = ROOT } }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			if = {
+				limit = {
+					74 = { is_owned_by = GER }
+					is_in_faction_with = GER
+				}
+				74 = {
+					add_core_of = ROOT
+					transfer_state_to = ROOT
+				}
+			}
+			else = {
+				add_political_power = 50
+				74 = {
+					add_core_of = ROOT
+					add_claim_by = ROOT
+				}
+				create_wargoal = {
+					type = take_state_focus
+					target = CZE
+					generator = { 74 }
+				}
+				if = {
+					limit = { NOT = { 74 = { is_owned_by = ROOT } } }
+					74 = {
+						owner = {
+							add_opinion_modifier = { target = ROOT modifier = SIL_territorial_demands }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_claim_moravia
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 20
+		y = 14
+		cost = 5
+		prerequisite = { focus = SIL_claim_czeski_slonsk }
+		bypass = { 75 = { is_core_of = ROOT } }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			75 = {
+				add_core_of = ROOT
+				add_claim_by = ROOT
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = CZE
+				generator = { 75 }
+			}
+			if = {
+				limit = { NOT = { 75 = { is_owned_by = ROOT } } }
+				75 = {
+					owner = {
+						add_opinion_modifier = { target = ROOT modifier = SIL_territorial_demands }
+					}
+				}
+			}
+		}
+	}
+
+
+	# ============================================================
+	# ECONOMY
+	# ============================================================
+
+	focus = {
+		id = SIL_new_international_coal_deals
+		icon = GFX_goal_generic_production
+		x = 3
+		y = 0
+		cost = 5
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 instant_build = yes }
+			add_ideas = SIL_best_coal
+			hidden_effect = {
+				SIL = {
+					transfer_state = 72
+	    		}
+				CZE = {
+					transfer_state = 72
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_invite_german_autobahn_engineers
+		icon = GFX_goal_generic_construction
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = SIL_new_international_coal_deals }
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+			add_tech_bonus = {
+				name = SIL_invite_german_autobahn_engineers
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			66 = {
+				add_building_construction = {
+					type = dam
+					level = 1
+					instant_build = yes
+					province = {
+						id = 3283
+					}
+				}
+				custom_effect_tooltip = {
+					localization_key = building_state_modifier|dam
+					INDENT = "    "
+				}
+			}
+			every_owned_state = {
+				limit = { 
+					is_core_of = ROOT 
+					free_building_slots = {
+						building = infrastructure 
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_expand_textile_and_machine_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = { focus = SIL_invite_german_autobahn_engineers }
+		ai_will_do = { factor = 12 }
+		available = {
+			66 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = PREV.OWNER
+				}
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = { 66 }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_expand_glywice_steelworks
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 5
+		y = 0
+		cost = 10
+		available = {
+			
+			67 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = PREV.OWNER
+				}
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 10
+				state = 67
+			}
+			random_owned_controlled_state = {
+				prioritize = { 67 }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_expand_zgoda
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 7
+		y = 1
+		cost = 5
+		prerequisite = { focus = SIL_expand_glywice_steelworks }
+		available = {
+			
+			762 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = SIL
+				}
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			762 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_develope_ostrava
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 9
+		y = 1
+		cost = 5
+		prerequisite = { focus = SIL_expand_glywice_steelworks }
+		available = {
+			
+			74 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = SIL
+				}
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			74 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_resource = {
+				type = steel
+				amount = 8
+				state = 74
+			}
+			add_resource = {
+				type = coal
+				amount = 12
+				state = 74
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_call_to_ostrava_silesians
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 9
+		y = 2
+		cost = 5
+		prerequisite = { focus = SIL_develope_ostrava }
+		available = {
+			
+			74 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = SIL
+				}
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			74 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_category = town
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 4
+				}
+			}
+			
+		}
+	}
+
+	focus = {
+		id = SIL_chemical_industry
+		icon = GFX_focus_generic_rubber
+		x = 3
+		y = 2
+		cost = 5
+		prerequisite = { focus = SIL_invite_german_autobahn_engineers }
+		ai_will_do = { factor = 9 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SIL_chemical_industry
+				bonus = 1.0
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_heavy_industry_consortium
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 5
+		y = 1
+		cost = 10
+		prerequisite = { focus = SIL_expand_glywice_steelworks }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			67 = {
+				if = {
+					limit = { 
+						is_core_of = ROOT 
+						free_building_slots = {
+							building = infrastructure 
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			add_resource = {
+				type = chromium
+				amount = 10
+				state = 66
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_expand_the_coal_mines
+		icon = GFX_goal_generic_production
+		x = 1
+		y = 3
+		cost = 10
+		prerequisite = { focus = SIL_chemical_industry }
+		available = {
+			
+			67 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = PREV.OWNER
+				}
+			}
+			66 = {
+				owns_or_subject_of = yes
+				controller = {
+					tag = PREV.OWNER
+				}
+			}
+		}
+
+		completion_reward = {
+			add_resource = {
+				type = coal
+				amount = 8
+				state = 67
+			}
+			add_resource = {
+				type = steel
+				amount = 4
+				state = 67
+			}
+			add_resource = {
+				type = coal
+				amount = 16
+				state = 66
+			}
+			add_ideas = SIL_coal_economy
+		}
+	}
+
+	focus = {
+		id = SIL_expand_chemical_industry
+		icon = GFX_focus_generic_rubber
+		x = 1
+		y = 4
+		cost = 10
+		prerequisite = { focus = SIL_expand_the_coal_mines }
+		ai_will_do = { factor = 9 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SIL_chemical_industry
+				bonus = 2.0
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_the_silesian_university
+		icon = GFX_focus_research
+		x = 3
+		y = 3
+		cost = 10
+		prerequisite = { focus = SIL_chemical_industry }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = SIL_miners_safety_regulations
+		icon = GFX_goal_generic_production
+		x = 3
+		y = 4
+		cost = 5
+		prerequisite = { focus = SIL_the_silesian_university }
+		completion_reward = {
+			add_stability = 0.1
+			add_resource = {
+				type = coal
+				amount = -1
+				state = 67
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_the_silesian_arsenal
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 5
+		y = 3
+		cost = 10
+		prerequisite = { focus = SIL_chemical_industry }
+		prerequisite = { focus = SIL_heavy_industry_consortium }
+		ai_will_do = { factor = 8 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_rearmament_effort
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 5
+		y = 4
+		cost = 5
+		prerequisite = { focus = SIL_the_silesian_arsenal }
+		ai_will_do = { factor = 8 }
+		completion_reward = {
+			add_ideas = SIL_silesian_arsenal
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_countrywide_urban_planning
+		icon = GFX_goal_generic_construction
+		x = 3
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_miners_safety_regulations }
+		completion_reward = {
+			add_stability = -0.05
+			every_owned_state = {
+				limit = { 
+					is_core_of = ROOT 
+					free_building_slots = {
+						building = infrastructure 
+						size > 1
+					}
+				}
+				add_state_modifier = {
+			        modifier = {
+			            local_building_slots_factor = 0.2
+			        }
+			    }
+				
+			}
+		}
+	}
+
+
+	# ============================================================
+	# MILITARY
+	# ============================================================
+
+	focus = {
+		id = SIL_encourage_paramilitaries
+		icon = GFX_goal_generic_construct_military
+		x = 34
+		y = 0
+		cost = 5
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+			add_stability = -0.05
+			add_timed_idea = { idea = SIL_normalizing days = 77 }
+		}
+	}
+
+	focus = {
+		id = SIL_organize_militia
+		icon = GFX_goal_generic_army_doctrines
+		x = 29
+		y = 0
+		cost = 10
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SIL_disorganised_armed_forces
+				add_idea = SIL_partially_organised_armed_forces
+			}
+			army_experience = 10
+			division_template = {
+				name = "Ślōnskŏ Brygada Milicyjnŏ"
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+		
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 67 } #Gliwicy
+				create_unit = {
+					division = "name = \"Ślōnskŏ Brygada Milicyjnŏ\" division_template = \"Ślōnskŏ Brygada Milicyjnŏ\" start_experience_factor = 0.2" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"Ślōnskŏ Brygada Milicyjnŏ\" division_template = \"Ślōnskŏ Brygada Milicyjnŏ\" start_experience_factor = 0.2" 
+					owner = SIL
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = SIL_invite_silesian_polish_veterans
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 29
+		y = 1
+		cost = 5
+		prerequisite = { focus = SIL_organize_militia }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			if = {
+		        limit = {
+		            has_idea = SIL_partially_organised_armed_forces_officers
+		        }
+		        swap_ideas = {
+					remove_idea = SIL_partially_organised_armed_forces_officers
+					add_idea = SIL_organised_armed_forces
+				}
+		    }
+		    else = {
+		    	swap_ideas = {
+					remove_idea = SIL_partially_organised_armed_forces
+					add_idea = SIL_partially_organised_armed_forces_polish_veterans
+				}
+		    }
+			army_experience = 10
+		}
+	}
+
+	focus = {
+		id = SIL_invite_silesian_wermacht_officers
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 31
+		y = 1
+		cost = 5
+		prerequisite = { focus = SIL_organize_militia }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			if = {
+		        limit = {
+		            has_idea = SIL_partially_organised_armed_forces_polish_veterans
+		        }
+		        swap_ideas = {
+					remove_idea = SIL_partially_organised_armed_forces_polish_veterans
+					add_idea = SIL_organised_armed_forces
+				}
+		    }
+		    else = {
+		    	swap_ideas = {
+					remove_idea = SIL_partially_organised_armed_forces
+					add_idea = SIL_partially_organised_armed_forces_officers
+				}
+		    }
+			army_experience = 10
+		}
+	}
+
+	focus = {
+		id = SIL_uprisings_veterans
+		icon = GFX_goal_generic_army_doctrines
+		x = 28
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = SIL_invite_silesian_wermacht_officers
+		}
+		prerequisite = {
+			focus = SIL_invite_silesian_polish_veterans
+		}
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+			army_experience = 20
+				division_template = {
+				name = "Ślōnskŏ Brygada Powstōńczŏ"
+				priority = 2
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+		
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 67 } #Gliwicy
+				create_unit = {
+					division = "name = \"Ślōnskŏ Brygada Powstōńczŏ\" division_template = \"Ślōnskŏ Brygada Powstōńczŏ\" start_experience_factor = 1.0" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"Ślōnskŏ Brygada Powstōńczŏ\" division_template = \"Ślōnskŏ Brygada Powstōńczŏ\" start_experience_factor = 1.0" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"Ślōnskŏ Brygada Powstōńczŏ\" division_template = \"Ślōnskŏ Brygada Powstōńczŏ\" start_experience_factor = 1.0" 
+					owner = SIL
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_mountaineers
+		icon = GFX_goal_generic_army_doctrines
+		x = 26
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = SIL_invite_silesian_wermacht_officers
+		}
+		prerequisite = {
+			focus = SIL_invite_silesian_polish_veterans
+		}
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+				division_template = {
+				name = "Ślōnskŏ Brygōda Gōrskŏ"
+				priority = 2
+				regiments = {
+					mountaineers = { x = 0 y = 0 }
+					mountaineers = { x = 0 y = 1 }
+					mountaineers = { x = 0 y = 2 }
+		
+					mountaineers = { x = 1 y = 0 }
+					mountaineers = { x = 1 y = 1 }
+					mountaineers = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 67 } #Gliwicy
+				create_unit = {
+					division = "name = \"1st Ślōnskŏ Brygōda Gōrskŏ\" division_template = \"Ślōnskŏ Brygōda Gōrskŏ\" start_experience_factor = 1.0" 
+					owner = SIL
+				}
+				create_unit = {
+					division = "name = \"2nd Ślōnskŏ Brygōda Gōrskŏ\" division_template = \"Ślōnskŏ Brygōda Gōrskŏ\" start_experience_factor = 1.0" 
+					owner = SIL
+				}
+			}
+			add_tech_bonus = {
+				name = SIL_mountaineers
+				bonus = 1.5
+				uses = 2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+				technology = tech_mountaineers3
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_veteran_war_stories
+		icon = GFX_goal_generic_army_doctrines
+		x = 28
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = SIL_uprisings_veterans 
+		}
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+			add_ideas = SIL_spirit_of_uprisings
+		}
+	}
+
+	focus = {
+		id = SIL_combined_military_training
+		icon = GFX_goal_generic_army_doctrines
+		x = 28
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = SIL_veteran_war_stories 
+		}
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = SIL_rifle_modernization
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_bunkers
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = SIL_organize_militia }
+		x = 36
+		y = 1
+		cost = 10
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			66 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 11517
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 6595
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 3438
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 9470
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 3510
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 3283
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 6462
+						instant_build = yes
+					}
+				}
+			}
+			67 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 479
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 11467
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 9511
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 9457
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_air_defense
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = SIL_organize_militia }
+		prerequisite = { focus = SIL_encourage_paramilitaries }
+		x = 34
+		y = 1
+		cost = 5
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			air_experience = 10
+			random_owned_state = {
+			    add_building_construction = {
+			        type = air_base
+			        level = 1
+			        instant_build = yes
+			    }
+			}
+			random_owned_state = {
+			    limit = { is_in_home_area = yes }
+			    add_building_construction = {
+			        type = air_base
+			        level = 1
+			        instant_build = yes
+			    }
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_doctrine_cost_reduction = {
+				name = SIL_silesian_air_defense
+				cost_reduction = 0.25
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_german_plane_mechanics
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = SIL_silesian_air_defense }
+		x = 34
+		y = 2
+		cost = 5
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+		        limit = {
+		            has_idea = SIL_disorganised_airforce
+		        }
+		        swap_ideas = {
+					remove_idea = SIL_disorganised_airforce
+					add_idea = SIL_organised_airforce_mechanics
+				}
+		    }
+		    else = {
+		    	swap_ideas = {
+					remove_idea = SIL_organised_airforce_pilots
+					add_idea = SIL_organised_airforce
+				}
+		    }
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_polish_fly_school_pilots
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = SIL_silesian_air_defense }
+		x = 36
+		y = 2
+		cost = 5
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+		        limit = {
+		            has_idea = SIL_organised_airforce_mechanics
+		        }
+		        swap_ideas = {
+					remove_idea = SIL_organised_airforce_mechanics
+					add_idea = SIL_organised_airforce
+				}
+		    }
+		    else = {
+		    	swap_ideas = {
+					remove_idea = SIL_disorganised_airforce
+					add_idea = SIL_organised_airforce_pilots
+				}
+		    }
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_fly_school_training
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = SIL_silesian_polish_fly_school_pilots }
+		prerequisite = { focus = SIL_german_plane_mechanics }
+		x = 36
+		y = 3
+		cost = 10
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = generic_skip_one_line_tt
+		    swap_ideas = {
+					remove_idea = SIL_organised_airforce
+					add_idea = SIL_organised_airforce_aces
+			}
+		}
+	}
+
+	
+
+	focus = {
+		id = SIL_silesian_artillery_works
+		icon = GFX_goal_generic_army_artillery
+		x = 30
+		y = 3
+		cost = 10
+		prerequisite = { 
+			focus = SIL_invite_silesian_wermacht_officers
+			focus = SIL_invite_silesian_polish_veterans
+		}
+		ai_will_do = { factor = 9 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SIL_artillery_works
+				bonus = 1.5
+				uses = 2
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_rifle_modernization
+		icon = GFX_goal_generic_small_arms
+		x = 30
+		y = 4
+		cost = 10
+		prerequisite = { 
+			focus = SIL_silesian_artillery_works
+		}
+		ai_will_do = { factor = 9 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_doctrine_cost_reduction = {
+				name = SIL_rifle_modernization
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				name = SIL_rifle_modernization
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				name = SIL_rifle_modernization
+				bonus = 1
+				uses = 1
+				category = support_tech
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_motorization
+		icon = GFX_goal_generic_army_motorized
+		x = 32
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SIL_invite_silesian_wermacht_officers
+			focus = SIL_invite_silesian_polish_veterans
+		}
+		ai_will_do = { factor = 7 }
+		completion_reward = {
+			add_ideas = SIL_motorization
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SIL_mechanising_our_army
+				bonus = 1.5
+				uses = 2
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_land_vechicle_experiments
+		icon = GFX_goal_generic_army_tanks
+		x = 32
+		y = 3
+		cost = 10
+		prerequisite = {
+			focus = SIL_motorization
+		}
+		ai_will_do = { factor = 7 }
+		completion_reward = {
+			add_tech_bonus = {
+				name = SIL_land_vechicle_experiments
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			66 = {
+				add_building_construction = {
+					type = land_facility
+					level = 1
+					instant_build = yes
+					province = 3485 # Mountains
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_invite_silesian_engineers_from_germany
+		icon = GFX_goal_generic_army_tanks
+		x = 32
+		y = 4
+		cost = 5
+		prerequisite = { focus = SIL_land_vechicle_experiments }
+		prerequisite = { focus = SIL_silesian_artillery_works }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_tech_bonus = {
+				name = SIL_silesian_tank_design
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_silesian_tank_design
+		icon = GFX_goal_generic_army_tanks
+		x = 32
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_invite_silesian_engineers_from_germany }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_tech_bonus = {
+				name = SIL_silesian_tank_design
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_protect_silesian_skies
+		icon = GFX_goal_generic_air_fighter
+		x = 34
+		y = 4
+		cost = 10
+		prerequisite = { focus = SIL_german_plane_mechanics }
+		ai_will_do = { factor = 6 }
+		completion_reward = {
+			air_experience = 20
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+				add_tech_bonus = {
+					name = SIL_protect_silesian_skies
+					bonus = 1.0
+					uses = 2
+					category = light_fighter
+				}
+			}
+			ELSE = {
+				add_tech_bonus = {
+					name = SIL_protect_silesian_skies
+					bonus = 1.0
+					uses = 2
+					category = light_air
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_air_experiments
+		icon = GFX_goal_generic_air_production
+		x = 36
+		y = 5
+		cost = 10
+		prerequisite = {
+			focus = SIL_protect_silesian_skies
+		}
+		ai_will_do = { factor = 7 }
+		completion_reward = {
+			add_tech_bonus = {
+				name = SIL_air_experiments
+				bonus = 1.0
+				uses = 1
+				category = air_equipment
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			67 = {
+				add_building_construction = {
+					type = air_facility
+					level = 1
+					instant_build = yes
+					province = 6512
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_expand_air_industry
+		icon = GFX_goal_generic_air_fighter
+		x = 34
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_protect_silesian_skies }
+		ai_will_do = { factor = 6 }
+		completion_reward = {
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+				add_tech_bonus = {
+					name = SIL_expand_air_industry
+					bonus = 1.0
+					uses = 1				
+					category = cas_bomber
+				}
+			}
+			ELSE = {
+				add_tech_bonus = {
+					name = SIL_expand_air_industry
+					bonus = 1.0
+					uses = 1				
+					category = light_air
+				}
+				add_tech_bonus = {
+					name = SIL_expand_air_industry
+					bonus = 1.0
+					uses = 1				
+					category = air_equipment
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+}
