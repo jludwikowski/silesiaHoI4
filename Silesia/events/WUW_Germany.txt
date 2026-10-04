@@ -19318,27 +19318,27 @@ country_event = {
 					}
 				}
 				if = {
-				    limit = {
-				        country_exists = SIL
-				    }
-				    SIL = {
-				    	transfer_state = 72
-						add_state_core = 72
-						transfer_state = 74
-						add_state_core = 74
-						SIL = {
-				        	country_event = { hours = 6 id = germany.52 }
-				        }
-				    }
-				} else = {
-					POL = {
-						transfer_state = 72
-						add_state_core = 72
-						POL = {
-							country_event = { hours = 6 id = germany.52 }
+						    limit = {
+						        country_exists = SIL
+						    }
+						    SIL = {
+						    	transfer_state = 72
+								add_state_core = 72
+								transfer_state = 74
+								add_state_core = 74
+								SIL = {
+						        	country_event = { hours = 6 id = germany.52 }
+						        }
+						    }
+						} else = {
+							POL = {
+								transfer_state = 72
+								add_state_core = 72
+								POL = {
+									country_event = { hours = 6 id = germany.52 }
+								}
+							}
 						}
-					}
-				}
 			}
 		}
 	}
@@ -19455,9 +19455,20 @@ country_event = {
 						add_core_of = FROM
 					}
 				}
-				POL = {
-					transfer_state = 72
-					add_state_core = 72
+				if = {
+					limit = {
+						     country_exists = SIL
+					}
+					SIL = {
+						transfer_state = 72
+						add_state_core = 72
+					}
+				}
+				else = {
+					POL = {
+						transfer_state = 72
+						add_state_core = 72
+					}
 				}
 			}
 		}

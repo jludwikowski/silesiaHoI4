@@ -4,8 +4,8 @@ state = {
 	manpower = 2502591
 	resources = {
 		steel = 11 #was 11 #was: 11 was 19 # was: 60
-		aluminium = 6 # was: 20
-		tungsten = 6
+		aluminium = 12 # was: 20
+		tungsten = 7
 		coal = 35 # initial distribution / 660 total
 	}
 	
@@ -27,6 +27,7 @@ state = {
 		buildings = {
 			infrastructure = 3
 			industrial_complex = 1
+			arms_factory = 1
 		}
 		
 	}

@@ -1,0 +1,11 @@
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = SIL
+		}
+		requested_factories = 1
+		progress = 0.20
+		efficiency = 100
+	}
+}

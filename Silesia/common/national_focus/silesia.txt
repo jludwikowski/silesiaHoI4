@@ -124,10 +124,11 @@ focus_tree = {
 		id = SIL_the_silesian_advisory_board
 		icon = GFX_focus_generic_treaty
 		x = 16
-		y = 3
+		y = 2
 		cost = 5
 		prerequisite = { 
-			focus = SIL_control_the_goverment
+			focus = SIL_leave_german_administration
+			focus = SIL_reorganize_administration
 		}
 		ai_will_do = { factor = 5 }
 		completion_reward = {
@@ -144,7 +145,7 @@ focus_tree = {
 				planning_skill = 3
 				logistics_skill = 3
 				legacy_id = 0
-				traits = { brilliant_strategist infantry_officer disciplinarian }
+				traits = { brilliant_strategist infantry_officer trait_mountaineer }
         	}
         	add_field_marshal_role = {
 	            character = SIL_wojciech_korfanty
@@ -246,8 +247,7 @@ focus_tree = {
 		y = 3
 		cost = 10
 		prerequisite = { 
-			focus = SIL_leave_german_administration
-			focus = SIL_reorganize_administration
+			focus = SIL_organize_political_parties
 		}
 		ai_will_do = { factor = 20 }
 		completion_reward = {
@@ -294,6 +294,10 @@ focus_tree = {
 			add_ideas = SIL_silesian_parlament
 			add_political_power = 50
 			add_stability = 0.05
+			add_popularity = { 
+				ideology = democracy
+				popularity = 0.1
+			}
 		}
 	}
 
@@ -301,7 +305,7 @@ focus_tree = {
 		id = SIL_align_poland
 		icon = GFX_focus_POL_nationalist_education
 		x = 12
-		y = 4
+		y = 5
 		cost = 10
 		prerequisite = { 
 			focus = SIL_silesian_sejm
@@ -973,7 +977,7 @@ focus_tree = {
 	focus = {
 		id = SIL_consolitate_power
 		icon = GFX_goal_generic_construct_infrastructure
-		x = 23
+		x = 24
 		y = 4
 		cost = 5
 		prerequisite = { focus = SIL_national_renewal }
@@ -987,7 +991,7 @@ focus_tree = {
 	focus = {
 		id = SIL_silesian_renewal_program
 		icon = GFX_goal_generic_construct_infrastructure
-		x = 23
+		x = 24
 		y = 5
 		cost = 10
 		prerequisite = { focus = SIL_consolitate_power }
@@ -1064,6 +1068,12 @@ focus_tree = {
 			add_political_power = 100
 			add_stability = 0.05
 			set_country_flag = SIL_guardian_state
+			add_tech_bonus = {
+				name = SIL_five_year_plan
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
 		}
 	}
 
@@ -1177,8 +1187,6 @@ focus_tree = {
 		}
 	}
 
-	# Unlocks once EITHER petition_foreign_recognition (Duchy) OR
-	# ban_extremist_parties (Guardian) is done.
 	focus = {
 		id = SIL_national_education
 		icon = GFX_focus_research
@@ -1210,10 +1218,10 @@ focus_tree = {
 	focus = {
 		id = SIL_silesian_academy
 		icon = GFX_focus_research
-		x = 20
-		y = 11
-		cost = 10
-		prerequisite = { focus = SIL_national_education focus = SIL_the_true_reich }
+		x = 22
+		y = 5
+		cost = 5
+		prerequisite = { focus = SIL_consolitate_power focus = SIL_the_prince_of_pless }
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_research_slot = 1
@@ -1447,7 +1455,7 @@ focus_tree = {
 		y = 12
 		cost = 5
 		prerequisite = { focus = SIL_military_state }
-		bypass = { 762 = { is_core_of = ROOT } }
+		bypass = { 762 = { is_owned_by = ROOT } }
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_political_power = 30
@@ -1541,7 +1549,7 @@ focus_tree = {
 		y = 14
 		cost = 5
 		prerequisite = { focus = SIL_claim_czeski_slonsk }
-		bypass = { 75 = { is_core_of = ROOT } }
+		bypass = { 75 = { is_owned_by = ROOT } }
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_political_power = 50
@@ -1557,6 +1565,37 @@ focus_tree = {
 			if = {
 				limit = { NOT = { 75 = { is_owned_by = ROOT } } }
 				75 = {
+					owner = {
+						add_opinion_modifier = { target = ROOT modifier = SIL_territorial_demands }
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIL_claim_sudety
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 20
+		y = 15
+		cost = 5
+		prerequisite = { focus = SIL_claim_moravia }
+		bypass = { 69 = { is_owned_by = ROOT } }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			69 = {
+				add_core_of = ROOT
+				add_claim_by = ROOT
+			}
+			create_wargoal = {
+				type = take_state_focus
+				target = GER
+				generator = { 69 }
+			}
+			if = {
+				limit = { NOT = { 75 = { is_owned_by = ROOT } } }
+				69 = {
 					owner = {
 						add_opinion_modifier = { target = ROOT modifier = SIL_territorial_demands }
 					}
@@ -1690,7 +1729,7 @@ focus_tree = {
 		completion_reward = {
 			add_resource = {
 				type = steel
-				amount = 10
+				amount = 12
 				state = 67
 			}
 			random_owned_controlled_state = {
@@ -1708,7 +1747,7 @@ focus_tree = {
 	focus = {
 		id = SIL_expand_zgoda
 		icon = GFX_goal_generic_construct_civ_factory
-		x = 7
+		x = 9
 		y = 1
 		cost = 5
 		prerequisite = { focus = SIL_expand_glywice_steelworks }
@@ -1739,7 +1778,7 @@ focus_tree = {
 	focus = {
 		id = SIL_develope_ostrava
 		icon = GFX_goal_generic_construct_civ_factory
-		x = 9
+		x = 7
 		y = 1
 		cost = 5
 		prerequisite = { focus = SIL_expand_glywice_steelworks }
@@ -1780,7 +1819,7 @@ focus_tree = {
 	focus = {
 		id = SIL_call_to_ostrava_silesians
 		icon = GFX_goal_generic_construct_civ_factory
-		x = 9
+		x = 7
 		y = 2
 		cost = 5
 		prerequisite = { focus = SIL_develope_ostrava }
@@ -1830,16 +1869,16 @@ focus_tree = {
 		ai_will_do = { factor = 9 }
 		completion_reward = {
 			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = synthetic_refinery
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
 			add_tech_bonus = {
 				name = SIL_chemical_industry
-				bonus = 1.0
+				bonus = 2.0
 				uses = 1
 				category = synth_resources
 			}
@@ -1881,8 +1920,13 @@ focus_tree = {
 			}
 			add_resource = {
 				type = chromium
-				amount = 10
+				amount = 12
 				state = 66
+			}
+			add_resource = {
+				type = tungsten
+				amount = 5
+				state = 67
 			}
 		}
 	}
@@ -1940,10 +1984,10 @@ focus_tree = {
 		ai_will_do = { factor = 9 }
 		completion_reward = {
 			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = synthetic_refinery
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -2059,6 +2103,32 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = SIL_expand_autobahn
+		icon = GFX_goal_generic_construction
+		x = 0
+		y = 5
+		cost = 10
+		prerequisite = { focus = SIL_expand_the_coal_mines }
+		ai_will_do = { factor = 12 }
+		completion_reward = {
+			every_owned_state = {
+				limit = { 
+					is_core_of = ROOT 
+					free_building_slots = {
+						building = infrastructure 
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
 
 	# ============================================================
 	# MILITARY
@@ -2149,7 +2219,36 @@ focus_tree = {
 					add_idea = SIL_partially_organised_armed_forces_polish_veterans
 				}
 		    }
-			army_experience = 10
+			army_experience = 20
+			division_template = {
+				name = "Ślōnskŏ Dywizyjŏ Piechoty"
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+		
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 67 } #Gliwicy
+				create_unit = {
+					division = "name = \"Ślōnskŏ Dywizyjŏ Piechoty\" division_template = \"Ślōnskŏ Dywizyjŏ Piechoty\" start_experience_factor = 0.5" 
+					owner = SIL
+				}
+			}
 		}
 	}
 
@@ -2177,7 +2276,7 @@ focus_tree = {
 					add_idea = SIL_partially_organised_armed_forces_officers
 				}
 		    }
-			army_experience = 10
+			army_experience = 30
 		}
 	}
 

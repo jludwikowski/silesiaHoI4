@@ -1,6 +1,6 @@
 ﻿capital = 66
 
-#oob = ""
+oob = "SIL_1936"
 
 set_research_slots = 3
 # Starting tech
@@ -17,6 +17,16 @@ set_technology = {
 	basic_train = 1
 	fuel_silos = 1
 	fuel_refining = 1
+}
+
+add_equipment_production = {
+    equipment = {
+        type = infantry_equipment_1
+        creator = "SIL"
+    }
+    requested_factories = 1
+    progress = 0.20
+    efficiency = 100
 }
 
 starting_train_buffer = 2

@@ -2631,10 +2631,10 @@ leader_traits = {
 	}
 
 	SIL_activist_defender = {
-		stability_factor = 0.08
-		political_power_factor = 0.08
+		stability_factor = 0.1
+		political_power_factor = 0.1
 		party_popularity_stability_factor = 0.3
-		monthly_population = 0.03
+		monthly_population = 0.05
 	}
 
 	SIL_military_prince = {
@@ -2648,10 +2648,20 @@ leader_traits = {
 		enemy_operative_capture_chance_factor = 0.5
 	}
 
+	SIL_silesian_defender = {
+		political_power_factor = 0.1
+		stability_factor = 0.05
+		land_doctrine_cost_factor = -0.15
+		coordination_bonus = 0.05
+		command_power_gain = 0.1
+		army_strength_factor = 0.05
+	}
+
 	SIL_prince_of_pless_trait = {
 		stability_factor = 0.1
 		neutrality_drift = 0.03
 		consumer_goods_factor = -0.10
+		political_power_factor = 0.05
 	}
 
 	SIL_silesian_loyalist = {
@@ -2659,6 +2669,11 @@ leader_traits = {
 		stability_factor = 0.08
 		weekly_manpower = 1000
 		party_popularity_stability_factor = 0.3
+	}
+
+	SIL_man_of_people = {
+		political_power_factor = 0.1
+		stability_factor = 0.1
 	}
 
 	SIL_silesian_loyalist_advisor = {

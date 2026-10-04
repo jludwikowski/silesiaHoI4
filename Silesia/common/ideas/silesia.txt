@@ -17,7 +17,8 @@ ideas = {
 				
 			modifier = {
 				war_support_factor = -0.15
-				army_org_factor = -0.08
+				army_attack_factor = -0.05
+				army_org_factor = -0.1
 				army_speed_factor = -0.1
 				training_time_factor = 0.25
 				minimum_training_level = -0.1
@@ -85,6 +86,7 @@ ideas = {
 				war_support_factor = -0.05
 				training_time_factor = 0.25
 				minimum_training_level = -0.1
+				army_attack_factor = 0.05
 			}
 		}
 
@@ -103,8 +105,32 @@ ideas = {
 			removal_cost = -1
 				
 			modifier = {
-				war_support_factor = -0.05
-				army_org_factor = +0.04
+				army_org_factor = +0.05
+				army_attack_factor = 0.05
+			}
+		}
+
+		SIL_elite_forces_training = {
+
+			allowed = {
+				original_tag = SIL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_infantry_bonus
+				
+			removal_cost = -1
+				
+			modifier = {
+				army_speed_factor = 0.05
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_org_factor = 0.05
+				breakthrough_factor = 0.05
+				terrain_penalty_reduction = 0.2
 			}
 		}
 
@@ -427,7 +453,7 @@ ideas = {
 		}
 
 		SIL_spirit_of_uprisings = {
-			picture = generic_army
+			picture = generic_infantry_bonus
 			allowed = { original_tag = SIL }
 			modifier = {
 				army_attack_factor = 0.05
@@ -469,7 +495,7 @@ ideas = {
 			modifier = {
 				consumer_goods_factor = -0.1
 				army_defence_factor = 0.1
-				state_resources_factor = 0.2
+				local_resources_factor = 0.2
 			}
 		}
 
@@ -519,7 +545,7 @@ ideas = {
  		}
 
 		SIL_motorization = {
-			picture = generic_armor_bonus
+			picture = cze_tatra
 			allowed = { original_tag = SIL }
 			modifier = {
 				army_speed_factor = 0.05
@@ -627,7 +653,7 @@ ideas = {
 		}
 
 		SIL_red_army_officers = {
-			picture = generic_army
+			picture = generic_infantry_bonus
 			allowed = { original_tag = SIL }
 			modifier = {
 				land_doctrine_cost_factor = -0.1
@@ -669,7 +695,7 @@ ideas = {
 		}
 
 		SIL_legitimate_dynasty = {
-			picture = generic_economic_treaty
+			picture = AFG_zahir_shah_idea
 			allowed = { always = yes }
 			modifier = {
 				stability_factor = 0.1
@@ -684,6 +710,7 @@ ideas = {
 				justify_war_goal_time = -0.25
 				generate_wargoal_tension = -0.4
 				war_support_factor = 0.05
+				army_morale_factor = 0.15
 			}
 		}
  
@@ -700,7 +727,7 @@ ideas = {
 		}
  
 		SIL_total_defense_doctrine = {
-			picture = idea_generic_defense
+			picture = generic_defense
 			allowed = { always = yes }
 			modifier = {
 				army_defence_factor = 0.15
@@ -731,11 +758,13 @@ ideas = {
 			modifier = {
 				conscription_factor = 0.01
 				war_support_factor = 0.05
+				army_strength_factor = 0.1
+				breakthrough_factor = 0.1
 			}
 		}
  
 		SIL_state_security_apparatus = {
-			picture = idea_generic_secret_police
+			picture = generic_secret_police
 			allowed = { always = yes }
 			modifier = {
 				stability_factor = 0.1
@@ -744,7 +773,7 @@ ideas = {
 		}
  
 		SIL_compact_of_labor = {
-			picture = idea_generic_national_unity
+			picture = generic_national_unity
 			allowed = { always = yes }
 			modifier = {
 				stability_factor = 0.05
@@ -753,7 +782,7 @@ ideas = {
 		}
 
 		SIL_volksbewegung_1 = {
-			picture = idea_generic_national_unity
+			picture = generic_national_unity
 			allowed = { always = yes }
 			modifier = {
 				political_power_factor = 0.05
@@ -761,7 +790,7 @@ ideas = {
 		}
  
 		SIL_volksbewegung_2 = {
-			picture = idea_generic_national_unity
+			picture = generic_national_unity
 			allowed = { always = yes }
 			modifier = {
 				political_power_factor = 0.1
@@ -770,7 +799,7 @@ ideas = {
 		}
  
 		SIL_volksbewegung_3_schism = {
-			picture = idea_generic_army_effort
+			picture = generic_national_unity
 			allowed = { always = yes }
 			modifier = {
 				recruitable_population_factor = 0.2
@@ -780,7 +809,7 @@ ideas = {
 		}
  
 		SIL_volksbewegung_3_client = {
-			picture = idea_generic_national_unity
+			picture = generic_national_unity
 			allowed = { always = yes }
 			modifier = {
 				political_power_factor = 0.15
@@ -819,13 +848,13 @@ ideas = {
 		}
  
 		SIL_conciliation_programme = {
-			picture = idea_generic_national_unity
+			picture = generic_national_unity
 			allowed = { always = yes }
 			modifier = { consumer_goods_factor = 0.1 }
 		}
 
  		SIL_legitimate_dynasty_2 = {
- 			picture = idea_generic_national_unity
+ 			picture = AFG_zahir_shah_idea
  			allowed = { always = yes }
  			modifier = {
  				stability_factor = 0.15
@@ -834,28 +863,28 @@ ideas = {
  		}
 
  		SIL_technocratic_planning_1 = {
- 			picture = idea_generic_construction
+ 			picture = generic_construction
  			allowed = { always = yes }
  			modifier = { political_power_factor = 0.1 }
  		}
  		SIL_technocratic_planning_2 = {
- 			picture = idea_generic_construction
+ 			picture = generic_construction
  			allowed = { always = yes }
  			modifier = { political_power_factor = 0.15 industrial_capacity_factory = 0.05 }
  		}
  		SIL_state_arms_directorate_2 = {
- 			picture = idea_generic_construct_mil_factory
+ 			picture = generic_construct_mil_factory
  			allowed = { always = yes }
  			modifier = { industrial_capacity_factory = 0.1 }
  		}
  		SIL_compact_of_labor_2 = {
- 			picture = idea_generic_national_unity
+ 			picture = generic_national_unity
  			allowed = { always = yes }
  			modifier = { stability_factor = 0.08 recruitable_population_factor = 0.15 }
  		}
 
  		SIL_silesian_academy_idea = {
- 			picture = idea_generic_construction
+ 			picture = generic_construction
  			allowed = { always = yes }
  			modifier = {
  				political_power_factor = 0.05
@@ -936,6 +965,9 @@ ideas = {
 			modifier = {
 				production_speed_infrastructure_factor = 0.10
 	            production_speed_arms_factory_factor = 0.1
+	            production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				local_resources_factor = 0.05
 			}
 		}
 	}

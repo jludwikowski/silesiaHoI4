@@ -115,7 +115,7 @@ characters = {
 		}
 		country_leader = {
 			ideology = marxism
-			traits = { leftist_independent }
+			traits = { leftist_independent SIL_man_of_people }
 			expire = "1954.1.1.1"
 			id = -1
 		}
@@ -133,7 +133,7 @@ characters = {
 		}
 		country_leader = {
 			ideology = falangism
-			traits = { unruly_falangist }
+			traits = { unruly_falangist SIL_man_of_people }
 			expire = "1953.1.1.1"
 			id = -1
 		}
@@ -176,8 +176,7 @@ characters = {
 			expire = "1960.1.1"
 			id = -1
 			traits = {
-				the_legitimist
-				military_modernizer
+				SIL_silesian_defender
 			}
 		}
 
@@ -206,8 +205,7 @@ characters = {
 				}
 			}
 			traits = {
-				the_legitimist
-				military_modernizer
+				SIL_silesian_defender
 			}
 		}
 	}
@@ -245,8 +243,7 @@ characters = {
 			}
 			available = {
 				OR = {
-					has_completed_focus = SIL_silesian_sejm 
-					has_completed_focus = SIL_the_silesian_advisory_board
+					has_completed_focus = SIL_organize_elections 
 				}
 			}
 			traits = {

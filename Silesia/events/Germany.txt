@@ -528,6 +528,7 @@ country_event = {
 		has_global_flag = sov_yes_pact
 		SOU = { exists = yes }
 		NOT =  { has_war_with = SOU }
+		SIL = { exists = no }
 		OR = {
 			AND = {
 				OR = {
@@ -3454,15 +3455,27 @@ country_event = {
 		}
 
 		if = {
-			limit = {
-				88 = {
-					is_owned_by = POL
-					is_fully_controlled_by = POL
-				}
-				72 = { is_controlled_by = CZE }
+		    limit = {
+		        country_exists = SIL
+		        SIL = {
+		            has_army_manpower = { size > 99999 }
+		        }
+		    }
+		    SIL = {
+					country_event = { hours = 6 id = germany.52 }
 			}
-			POL = {
-				country_event = { hours = 6 id = germany.52 }
+		} else = {
+			if = {
+				limit = {
+					88 = {
+						is_owned_by = POL
+						is_fully_controlled_by = POL
+					}
+					72 = { is_controlled_by = CZE }
+				}
+				POL = {
+					country_event = { hours = 6 id = germany.52 }
+				}
 			}
 		}
 
