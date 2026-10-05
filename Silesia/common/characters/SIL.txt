@@ -197,12 +197,18 @@ characters = {
 
 		advisor = {
 			slot = political_advisor
-			idea_token = SIL_wojciech_korfanty_advisor
+			idea_token = SIL_wojciech_korfanty
+		    allowed = {
+				original_tag = SIL
+			}
 			available = {
 				OR = {
 					has_completed_focus = SIL_silesian_sejm 
 					has_completed_focus = SIL_the_silesian_advisory_board
 				}
+				NOT = {
+	                has_country_leader = { character = SIL_wojciech_korfanty }
+            	}
 			}
 			traits = {
 				SIL_silesian_defender

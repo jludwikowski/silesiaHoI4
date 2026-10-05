@@ -70,6 +70,34 @@ SIL_goverment_category = {
 	    }
 	}
 
+	SIL_socialist_activists = {
+
+        icon = generic_decision
+        
+        cost = 50
+        fire_only_once = no
+        
+        # The duration the decision effect remains active (2 years = 730 days)
+        days_remove = 25 
+        
+        allowed = {
+            original_tag = SIL
+        }
+        
+        available =  {
+            has_completed_focus = SIL_communist_consolidation
+        }
+        
+        # Effects applied immediately when clicking the decision (starts the 2-year timer)
+        complete_effect = {
+        }
+        
+        # Effects applied automatically when the 2-year timer runs out
+        remove_effect = {
+            add_popularity = { ideology = communism popularity = 0.05 }
+        }
+    }
+
 	SIL_elite_forces_training_decision = {
 	    icon = generic_intelligence_agency
 
@@ -290,7 +318,6 @@ SIL_german_question_category = {
 		fire_only_once = yes
 
 		cancel_trigger = {
-			has_country_flag = SIL_conciliation_in_progress
 			has_country_flag = SIL_german_question_resolved
 		}
 		
@@ -338,7 +365,6 @@ SIL_german_question_category = {
 		fire_only_once = yes
 
 		cancel_trigger = {
-			has_country_flag = SIL_conciliation_in_progress
 			has_country_flag = SIL_german_question_resolved
 		}
 		
@@ -385,7 +411,6 @@ SIL_german_question_category = {
 		fire_only_once = yes
 
 		cancel_trigger = {
-			has_country_flag = SIL_conciliation_in_progress
 			has_country_flag = SIL_german_question_resolved
 		}
 		
@@ -432,7 +457,6 @@ SIL_german_question_category = {
 		fire_only_once = yes
 
 		cancel_trigger = {
-			has_country_flag = SIL_conciliation_in_progress
 			has_country_flag = SIL_german_question_resolved
 		}
 		
@@ -567,40 +591,23 @@ SIL_german_question_category = {
 			if = {
 				limit = { has_idea = SIL_german_unrest_1 }
 				66 = { remove_building = { type = industrial_complex level = 1 } }
+				remove_ideas = SIL_german_unrest_1
 			}
 			if = {
 				limit = { has_idea = SIL_german_unrest_2 }
 				66 = { remove_building = { type = industrial_complex level = 2 } }
+				remove_ideas = SIL_german_unrest_2
 			}
 			if = {
 				limit = { has_idea = SIL_german_unrest_3 }
 				66 = { remove_building = { type = industrial_complex level = 2 } add_extra_state_shared_building_slots = -1}
+				remove_ideas = SIL_german_unrest_3
 			}
 			if = {
 				limit = { has_idea = SIL_german_unrest_4 }
 				66 = { remove_building = { type = industrial_complex level = 2 } add_extra_state_shared_building_slots = -2}
+				remove_ideas = SIL_german_unrest_4
 			}
-			
-			if = {
-		        limit = { has_idea = SIL_conciliation_programme }
-		        remove_ideas = SIL_conciliation_programme
-		    }
-		    if = {
-		        limit = { has_idea = SIL_german_unrest_1 }
-		        remove_ideas = SIL_german_unrest_1
-		    }
-		    if = {
-		        limit = { has_idea = SIL_german_unrest_2 }
-		        remove_ideas = SIL_german_unrest_2
-		    }
-		    if = {
-		        limit = { has_idea = SIL_german_unrest_3 }
-		        remove_ideas = SIL_german_unrest_3
-		    }
-		    if = {
-		        limit = { has_idea = SIL_german_unrest_4 }
-		        remove_ideas = SIL_german_unrest_4
-		    }
 			add_stability = -0.05
 		}
 
@@ -628,7 +635,7 @@ SIL_german_question_category = {
 			ai_will_do = { factor = 2 }
  
 			complete_effect = {
-				set_country_flag = SIL_conciliation_in_progress
+					
 				add_ideas = SIL_conciliation_programme
 				if = {
 					limit = {

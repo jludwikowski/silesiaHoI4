@@ -266,13 +266,14 @@ focus_tree = {
 		icon = GFX_goal_generic_war_with_comintern
 		x = 10
 		y = 4
-		cost = 10
+		cost = 5
+		mutually_exclusive = { focus = SIL_silesian_sejm }
 		prerequisite = { 
 			focus = SIL_organize_elections
 		}
 		ai_will_do = { factor = 5 }
 		completion_reward = {
-			add_political_power = 50
+			add_war_support = 0.05
 			add_popularity = { 
 				ideology = communism
 				popularity = 0.1
@@ -286,6 +287,7 @@ focus_tree = {
 		x = 12
 		y = 4
 		cost = 10
+		mutually_exclusive = { focus = SIL_recreating_KPO }
 		prerequisite = { 
 			focus = SIL_organize_elections
 		}
@@ -348,7 +350,6 @@ focus_tree = {
 		y = 5
 		cost = 10
 		prerequisite = { focus = SIL_recreating_KPO }
-		mutually_exclusive = { focus = SIL_the_prince_of_pless }
 		available = { NOT = { has_government = communism } }
 		ai_will_do = { factor = 5 }
 		completion_reward = {
@@ -365,7 +366,7 @@ focus_tree = {
 		icon = GFX_SOV_the_stalin_constitutiony_ccp_2d_sov_compatibility
 		x = 9
 		y = 6
-		cost = 10
+		cost = 5
 		prerequisite = { focus = SIL_communist_consolidation }
 		mutually_exclusive = { focus = SIL_national_road }
 		available = { has_country_flag = SIL_kpo_organized }
@@ -397,6 +398,7 @@ focus_tree = {
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			add_stability = -0.05
+			add_war_support = 0.05
 			add_ideas = SIL_national_communism_doctrine
 			custom_effect_tooltip = SIL_national_road_tt
 		}
@@ -414,7 +416,7 @@ focus_tree = {
 		completion_reward = {
 			add_popularity = { ideology = communism popularity = 0.05 }
 			add_stability = -0.03
-			add_war_support = 0.02
+			add_war_support = 0.07
 			if = {
 				limit = { country_exists = SOV }
 				SOV = { add_opinion_modifier = { target = ROOT modifier = SIL_comintern_sympathizer } }
@@ -436,8 +438,8 @@ focus_tree = {
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_popularity = { ideology = communism popularity = 0.05 }
-			add_stability = 0.03
-			add_ideas = SIL_political_activity
+			add_stability = 0.05
+			add_ideas = SIL_socialist_activism
 			custom_effect_tooltip = SIL_build_coalition_tt
 		}
 	}
@@ -457,7 +459,7 @@ focus_tree = {
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_stability = -0.05
-			add_war_support = 0.03
+			add_war_support = 0.05
 			custom_effect_tooltip = SIL_prepare_insurrection_tt
 		}
 	}
@@ -499,7 +501,7 @@ focus_tree = {
 		}
 		ai_will_do = { factor = 5 }
 		completion_reward = {
-			add_stability = -0.15
+			add_stability = -0.1
 			add_war_support = 0.1
 			remove_ideas = SIL_socialist_revolutionaries_activity
 			set_politics = {
@@ -537,6 +539,7 @@ focus_tree = {
 				election_frequency = 48
 				elections_allowed = yes
 			}
+			add_stability = 0.05
 			custom_effect_tooltip = SIL_electoral_victory_tt
 		}
 	}
@@ -559,9 +562,33 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SIL_soviet_economic_aid
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 8
+		y = 10
+		cost = 5
+		prerequisite = { 
+			focus = SIL_communist_coup
+		}
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 instant_build = yes }
+			add_offsite_building = { type = arms_factory level = 2 instant_build = yes }
+			hidden_effect = {
+				SIL = {
+					transfer_state = 280
+	    		}
+				BRA = {
+					transfer_state = 280
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = SIL_nationalize_factories
 		icon = GFX_goal_generic_construct_civ_factory
-		x = 5
+		x = 13
 		y = 11
 		cost = 10
 		prerequisite = { 
@@ -661,9 +688,9 @@ focus_tree = {
 	focus = {
 		id = SIL_soviet_science_cooperation
 		icon = GFX_focus_research
-		x = 3
+		x = 15
 		y = 11
-		cost = 10
+		cost = 5
 
 		available = {
 			if = {
@@ -1232,7 +1259,7 @@ focus_tree = {
 	focus = {
 		id = SIL_military_state
 		icon = GFX_goal_generic_small_arms
-		x = 18
+		x = 20
 		y = 11
 		cost = 10
 		prerequisite = {
@@ -1428,7 +1455,7 @@ focus_tree = {
 	focus = {
 		id = SIL_claim_zaolzie
 		icon = GFX_goal_generic_more_territorial_claims
-		x = 14
+		x = 16
 		y = 12
 		cost = 5
 		prerequisite = { focus = SIL_military_state }
@@ -1451,7 +1478,7 @@ focus_tree = {
 	focus = {
 		id = SIL_claim_katowice
 		icon = GFX_goal_generic_more_territorial_claims
-		x = 22
+		x = 24
 		y = 12
 		cost = 5
 		prerequisite = { focus = SIL_military_state }
@@ -1474,7 +1501,7 @@ focus_tree = {
 	focus = {
 		id = SIL_negotiate_czeski_slonsk
 		icon = GFX_goal_generic_alliance
-		x = 16
+		x = 18
 		y = 13
 		cost = 10
 		prerequisite = { focus = SIL_military_state }
@@ -1501,7 +1528,7 @@ focus_tree = {
 	focus = {
 		id = SIL_claim_czeski_slonsk
 		icon = GFX_goal_generic_more_territorial_claims
-		x = 20
+		x = 22
 		y = 13
 		cost = 5
 		prerequisite = { focus = SIL_military_state }
@@ -1545,7 +1572,7 @@ focus_tree = {
 	focus = {
 		id = SIL_claim_moravia
 		icon = GFX_goal_generic_more_territorial_claims
-		x = 20
+		x = 22
 		y = 14
 		cost = 5
 		prerequisite = { focus = SIL_claim_czeski_slonsk }
@@ -1576,7 +1603,7 @@ focus_tree = {
 	focus = {
 		id = SIL_claim_sudety
 		icon = GFX_goal_generic_more_territorial_claims
-		x = 20
+		x = 22
 		y = 15
 		cost = 5
 		prerequisite = { focus = SIL_claim_moravia }

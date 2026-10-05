@@ -481,11 +481,12 @@ ideas = {
 			}
 		}
 
-		SIL_political_activity = {
+		SIL_socialist_activism = {
 			picture = generic_central_management
 			allowed = { original_tag = SIL }
 			modifier = {
 				political_power_factor = 0.1
+				production_speed_buildings_factor = 0.05
 			}
 		}
 
